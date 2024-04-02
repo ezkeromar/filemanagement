@@ -18,7 +18,7 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 
 class AuthController extends Controller
 {
-    
+
 
  
 
@@ -54,8 +54,9 @@ class AuthController extends Controller
    */
   public function destroy(): Response
   {
-    auth()->logout();
-    // what is logout in french
+    // auth()->logout();
+    auth()->guard('api')->logout();
+
     return response(['message' => 'Déconnexion réussie']);
   }
 
@@ -122,7 +123,7 @@ class AuthController extends Controller
     ])->save();
 
     // logout user
-    auth()->logout();
+    auth()->guard('api')->logout();
     return response(['message' => 'Déconnexion réussie']);
   }
 
