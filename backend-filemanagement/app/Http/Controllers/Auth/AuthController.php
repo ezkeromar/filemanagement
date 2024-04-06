@@ -73,7 +73,6 @@ class AuthController extends Controller
           'token_type' => 'bearer',
           'expires_in' => $expires_at
     ]);
-        // ->withCookie(cookie(config('jwt.token_name'), $token, $expires_at, null, null, false, true));
   }
 
   public function register(Request $request)

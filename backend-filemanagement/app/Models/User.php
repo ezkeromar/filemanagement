@@ -63,4 +63,13 @@ class User extends Authenticatable implements JWTSubject
         "permissions" => $this->permissions()
       ];
     }
+
+    public function secretKeys()
+    {
+        return $this->hasMany(SecretKey::class);
+    }
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }
