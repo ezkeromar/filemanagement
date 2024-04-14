@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  color: #f5f5f5;
+  font-style: normal;
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+  .flex-end {
+    @apply flex justify-end items-center;
+  }
+  .flex-evenly {
+    @apply flex justify-evenly items-center;
+  }
+
+  /* .link-hover {
+    @apply hover:bg-gray-100 hover:dark:bg-gray-700;
+  } */
+
+  .h1-bold {
+    @apply text-[34px] font-bold leading-[42px] tracking-tighter;
+  }
+  .h1-semibold {
+    @apply text-[34px] font-semibold leading-[42px] tracking-tighter;
+  }
+  .h1-semibold {
+    @apply text-[30px] font-semibold leading-[42px] tracking-tighter;
+  }
+  .h2-bold {
+    @apply text-[24px] font-bold leading-[31.2px];
+  }
+  .h2-semibold {
+    @apply text-[24px] font-semibold leading-[31.2px];
+  }
+  .h3-bold {
+    @apply text-[20px] font-bold leading-[26px];
+  }
+  .h3-semibold {
+    @apply text-[20px] font-semibold leading-[24.8px];
+  }
+  .base-medium {
+    @apply text-[18px] font-medium leading-[25.2px];
+  }
+  .base-semibold {
+    @apply text-[18px] font-semibold leading-[25.2px];
+  }
+  .base-bold {
+    @apply text-[18px] font-bold leading-[140%];
+  }
+  .paragraph-regular {
+    @apply text-[16px] font-normal leading-[22.4px];
+  }
+  .paragraph-medium {
+    @apply text-[16px] font-medium leading-[22.4px];
+  }
+  .paragraph-semibold {
+    @apply text-[16px] font-semibold leading-[20.8px];
+  }
+  .body-regular {
+    @apply text-[14px] font-normal leading-[19.6px];
+  }
+  .body-medium {
+    @apply text-[14px] font-medium leading-[18.2px];
+  }
+  .body-semibold {
+    @apply text-[14px] font-semibold leading-[18.2px];
+  }
+  .small-regular {
+    @apply text-[12px] font-normal leading-[15.6px];
+  }
+  .small-medium {
+    @apply text-[12px] font-medium leading-[15.6px];
+  }
+  .small-semibold {
+    @apply text-[12px] font-semibold leading-[15.6px];
+  }
+  .subtle-medium {
+    @apply text-[10px] font-medium leading-[13px];
+  }
+  .subtle-regular {
+    @apply text-[10px] font-normal leading-[13px];
+  }
+  .underlineLink {
+    @apply relative;
+  }
+  .underlineLink::after {
+    @apply absolute content-[''] bg-white w-full h-[1.5px] left-0 bottom-[-1px] rounded-xl;
+  }
+}
+
+.primary-bg-gradient {
+  background: linear-gradient(152deg, #3b37ff 0%, #9b50b4 80%);
+  transition: all ease-in 300ms;
+}
+.primary-bg-gradient:hover {
+  opacity: 0.9;
+}
+.primary-bg-gradient-2 {
+  background: linear-gradient(224deg, #6367fe 30%, #9d04e2 70%);
+}
+
+.primary-text-gradient {
+  background: linear-gradient(129deg, #3b37ff 0%, #f1c8ff 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+strong {
+  font-weight: bold;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 50px;
+}
+
+h1,
+h2,
+h3 {
+  font-size: clamp(24px, 5vw, 36px) !important;
+  line-height: clamp(25px, 5vw, 42px) !important;
+}
+p {
+  font-size: clamp(18px, 4vw, 20px) !important;
+}

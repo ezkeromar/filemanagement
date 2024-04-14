@@ -11,6 +11,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rules;
@@ -18,16 +19,9 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 
 class AuthController extends Controller
 {
-
-
- 
-
-  /**
-   * Handle an incoming authentication request.
-   */
   public function store(LoginRequest $request): Response
   {
-        $request->ensureIsNotRateLimited();
+    $request->ensureIsNotRateLimited();
 
     $credentials = $request->only('email', 'password');
 
@@ -38,7 +32,7 @@ class AuthController extends Controller
     }
 
     if (!$token = auth()->attempt($credentials)) {
-      RateLimiter::hit($request->throttleKey()); //check if user is active
+      RateLimiter::hit($request->throttleKey()); 
 
       throw ValidationException::withMessages([
         'email' => __('auth.failed'),
@@ -54,7 +48,6 @@ class AuthController extends Controller
    */
   public function destroy(): Response
   {
-    // auth()->logout();
     auth()->guard('api')->logout();
 
     return response(['message' => 'Déconnexion réussie']);
@@ -69,38 +62,51 @@ class AuthController extends Controller
   {
     $expires_at = auth("api")->factory()->getTTL() * 60;
     return response([
-          'access_token' => $token,
-          'token_type' => 'bearer',
-          'expires_in' => $expires_at
+      "user" => auth()->user(),
+      'access_token' => $token,
+      'token_type' => 'bearer',
+      'expires_in' => $expires_at
     ]);
   }
 
   public function register(Request $request)
   {
-    $request->validate([
+
+    $validator = Validator::make($request->all(), [
       'name' => 'required|string|min:5|max:255',
       'email' => 'required|string|email|max:255|unique:users',
     ]);
+
+    if ($validator->fails()) {
+      return response()->json($validator->errors(), 402);
+    }
+
     $data = [
       'name' => $request->name,
       'email' => $request->email,
-      'password' => Hash::make(env('DEFAULT_USERS_PASSWORD', 'password')),
+      'password' => Hash::make($request->password ?? "password"),
     ];
 
     $user = User::create($data);
     return response()->json([
-      'message' => 'Utilisateur créé avec succès',
+      'message' => 'You are successfully registered.',
       'user' => $user,
     ], 201);
   }
 
-  public function updatePassword(Request $request)
+  public function updatePassword(Request $request): Response
   {
-    $request->validate([
+
+    $validator = Validator::make($request->all(), [
       'email' => ['required', 'email'],
       'current_password' => ['required'],
       'password' => ['required', 'confirmed', Rules\Password::defaults()],
     ]);
+
+    if ($validator->fails()) {
+      return response()->json($validator->errors(), 402);
+    }
+
 
     if ($request->email != auth()->user()->email) {
       throw ValidationException::withMessages([
@@ -150,15 +156,16 @@ class AuthController extends Controller
 
   public function resetPassword(Request $request)
   {
-    $request->validate([
+    $validator = Validator::make($request->all(), [
       'token' => ['required'],
       'email' => ['required', 'email'],
       'password' => ['required', 'confirmed', Rules\Password::defaults()],
     ]);
 
-    // Here we will attempt to reset the user's password. If it is successful we
-    // will update the password on an actual user model and persist it to the
-    // database. Otherwise we will parse the error and return the response.
+    if ($validator->fails()) {
+      return response()->json($validator->errors(), 402);
+    }
+    
     $status = Password::reset(
       $request->only('email', 'password', 'password_confirmation', 'token'),
       function ($user) use ($request) {

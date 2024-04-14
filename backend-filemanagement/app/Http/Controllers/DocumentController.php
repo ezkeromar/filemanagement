@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+    use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Document;
-use App\Services\AuthService;
+    use App\Services\AuthService;
 
 class DocumentController extends Controller
 {
@@ -17,7 +18,7 @@ class DocumentController extends Controller
         $this->authService = $authService;
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : JsonResponse
     {
         $request->validate([
             'file' => 'required|file',
@@ -27,14 +28,16 @@ class DocumentController extends Controller
 
         $document = $this->createDocument($request->file('file'), $user);
 
-        return response()->json(['message' => 'Document uploaded successfully', 'document' => $document], 201);
+        return response()->json(['message' => 'Document uploaded successfully', 'document' => $document], 200);
     }
 
     public function index(Request $request)
     {
+        $perPage = $request->query('perPage', 10);
+
         $user = $this->getUserOrFail($request);
 
-        $documents = $user->documents()->paginate(10);
+        $documents = $user->documents()->paginate($perPage);
 
         return response()->json($documents, 200);
     }
@@ -47,7 +50,7 @@ class DocumentController extends Controller
         return response()->json(['document' => $document], 200);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): JsonResponse
     {
         $document = Document::findOrFail($id);
         $this->checkOwnership($document , $request);
@@ -55,8 +58,6 @@ class DocumentController extends Controller
         $request->validate([
             'file' => 'required|file',
         ]);
-
-        
 
         $this->deleteFile($document->path);
         $document = $this->updateDocument($request->file('file'), $document);

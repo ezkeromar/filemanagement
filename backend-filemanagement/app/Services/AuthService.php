@@ -8,7 +8,7 @@ use App\Models\SecretKey;
 class AuthService
 {
     public static function getUser($request) {
-        // Check if the request contains a secret key
+        
         $secretKey = $request->header('X-Secret-Key');
 
         if ($secretKey ) {

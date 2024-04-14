@@ -9,7 +9,6 @@ class AuthenticateWithApiOrSecretKey
 {
     public function handle($request, Closure $next)
     {
-        // Check if the user is authenticated via API token
         if (Auth::guard('api')->check()) {
             return $next($request); // User is authenticated via API token
         }

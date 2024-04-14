@@ -18,9 +18,11 @@ class SecretKeyController extends Controller
     }
     public function index(Request $request)
     {
+        $perPage = $request->query('perPage', 10);
+
         $user = $this->getUserOrFail($request);
 
-        $secretKeys = $user->secretKeys()->paginate(10);
+        $secretKeys = $user->secretKeys()->paginate($perPage);
 
         return response()->json($secretKeys, 200);
     }
