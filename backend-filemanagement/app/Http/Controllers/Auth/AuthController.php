@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Billing;
+use App\Models\Plan;
 use App\Models\User;
+use App\Services\BillingService;
+use App\Services\PlanService;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -15,10 +19,25 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rules;
-use Illuminate\Routing\Middleware\ThrottleRequests;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
+
 {
+
+  protected BillingService $billingService;
+  protected PlanService $planService;
+
+  public function __construct(BillingService $billingService, PlanService $planService)
+  {
+    $this->billingService = $billingService;
+    $this->planService = $planService;
+  }
+  // me 
+ 
+  
+
   public function store(LoginRequest $request): Response
   {
     $request->ensureIsNotRateLimited();
@@ -186,4 +205,79 @@ class AuthController extends Controller
 
     return response()->json(['status' => __($status)]);
   }
+
+  public function updateFirstLogin(Request $request)
+  {
+      $user = auth::user();
+      $user->is_first_login = false;
+      $user->save();
+
+      return response()->json(['message' => 'isFirstLogin updated successfully'], 200);
+  }
+  public function me(Request $request)
+{
+    $user = $this->getUser();
+    $billing = $this->getUserBilling($user);
+
+    if ($billing && $billing->billable_type === "App\Models\Plan") {
+        $plan = $this->getPlanDetails($billing);
+        $user->details = $this->calculateBillingDetails($billing, $plan);
+        $user->plan = $plan;
+    } else {
+        $user->plan = null;
+    }
+
+    return $user;
+}
+
+private function getUser(): User
+{
+    $userId = auth()->user()->id;
+    return User::with('roles', 'permissions', 'currentBilling')->find($userId);
+}
+
+private function getUserBilling($user): ?Billing
+{
+    return $user->currentBilling;
+}
+
+private function getPlanDetails($billing): ?Plan
+{
+    if ($billing->status === "completed") {
+        return $this->planService->show($billing->billable_id);
+    }
+    return null;
+}
+
+private function calculateBillingDetails($billing, $plan): array
+{
+    $details = [];
+    if ($plan) {
+        $billing_interval = $plan->billing_interval;
+        $date_created = $billing->date_created;
+        $next_payment_date = $this->calculateNextPaymentDate($date_created, $billing_interval);
+        $days = max(0, (strtotime($next_payment_date) - strtotime(date('Y-m-d H:i:s'))) / (60 * 60 * 24));
+        $daysGlobal = (strtotime($next_payment_date) - strtotime($date_created)) / (60 * 60 * 24);
+        $percentage = ($days * 100) / $daysGlobal;
+        $details = [
+            "date_created" => $date_created,
+            'next_payment_date' => $next_payment_date,
+            'days' => $days,
+            'percentage' => $percentage,
+        ];
+    }
+    return $details;
+}
+
+private function calculateNextPaymentDate($date_created, $billing_interval): string
+{
+    $next_payment_date = null;
+    if ($billing_interval === "annual") {
+        $next_payment_date = date('Y-m-d H:i:s', strtotime($date_created . ' + 1 year'));
+    } else {
+        $next_payment_date = date('Y-m-d H:i:s', strtotime($date_created . ' + 1 month'));
+    }
+    return $next_payment_date;
+}
+
 }

@@ -15,6 +15,8 @@ class CreateDocumentsTable extends Migration
             $table->string('path');
             $table->string('url');
             $table->nullableMorphs('documentable');
+            // size number 
+            $table->integer('size')->default(0);
             $table->timestamps();
         });
     }

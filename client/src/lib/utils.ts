@@ -20,6 +20,8 @@ export function formatNumber(num: number): string {
   }
 }
 
+
+
 export function generateString(n: number): string {
   const letters1 = "abcdefghijklmnopqrstuvwxyz";
   const letters2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -74,20 +76,33 @@ export const decryptData = (encryptedData: string): Data | null => {
   return decryptedData;
 };
 
-export const calculatePaginationArray =  (page: number, totalPages: number) : number[] => {
-  const paginationArray = [];
-  let startPage = Math.max(1, page - 4);
-  let endPage = Math.min(totalPages, startPage + 9);
+type ConversionUnit = 'gb' | 'mb' | 'byte';
 
-  for (let i = startPage; i <= endPage; i++) {
-      paginationArray.push(i);
-  }
+export const convertSize = (value: number, from: ConversionUnit, to: ConversionUnit): number => {
+    // Define conversion factors
+    const conversionFactors: { [key in ConversionUnit]: { [key in ConversionUnit]: number } } = {
+      'gb': {
+        'gb': 1,
+        'mb': 1024,
+        'byte': 1024 * 1024 * 1024
+      },
+      'mb': {
+        'gb': 1 / 1024,
+        'mb': 1,
+        'byte': 1024 * 1024
+      },
+      'byte': {
+        'gb': 1 / (1024 * 1024 * 1024),
+        'mb': 1 / (1024 * 1024),
+        'byte': 1
+      }
+    };
 
-  if (totalPages > 10) {
-      paginationArray.push(totalPages - 2, totalPages - 1, totalPages);
-  }
+    if (!conversionFactors[from] || !conversionFactors[from][to]) {
+        throw new Error('Invalid conversion units');
+    }
 
-  return paginationArray;
+    return value * conversionFactors[from][to];
 }
 
 

@@ -23,6 +23,9 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        "current_billing_id",
+        "is_first_login",
+        "websiteUrl"
     ];
 
     /**
@@ -61,6 +64,7 @@ class User extends Authenticatable implements JWTSubject
         'email' => $this->email,
         'roles' => $this->getRoleNames(),
         "permissions" => $this->permissions()
+        
       ];
     }
 
@@ -71,5 +75,10 @@ class User extends Authenticatable implements JWTSubject
     public function documents()
     {
         return $this->hasMany(Document::class);
+    }
+
+    public function currentBilling()
+    {
+        return $this->belongsTo(Billing::class, "current_billing_id");
     }
 }

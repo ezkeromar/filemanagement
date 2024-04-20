@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-    use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Document;
-    use App\Services\AuthService;
+use App\Services\AuthService;
 
 class DocumentController extends Controller
 {
@@ -45,6 +44,7 @@ class DocumentController extends Controller
     public function find($id , Request $request)
     {
         $document = Document::findOrFail($id);
+
         $this->checkOwnership($document , $request);
 
         return response()->json(['document' => $document], 200);
@@ -78,14 +78,19 @@ class DocumentController extends Controller
 
     private function createDocument($file, $user)
     {
+        $size = $file->getSize();
+        
         $path = $file->store('public/documents');
         $fileName = $file->getClientOriginalName();
+
+
 
         $document = new Document();
         $document->name = $fileName;
         $document->user_id = $user->id;
         $document->path = str_replace('public/', '', $path);
         $document->url = $this->generateUrl($path);
+        $document->size = $size;
         $document->save();
 
         return $document;

@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { billing } from "./billing";
+import { Plan } from "./Plan";
 
 
 export const loginSchema = z.object({
@@ -43,18 +45,38 @@ export const registerSchema = z
 
 export type TRegister = z.infer<typeof registerSchema>
 
+
+
+interface UserDetails {
+  date_created: string;
+  next_payment_date: string;
+  days: number;
+  percentage: number;
+}
+
 export interface User {
   id: number;
   name: string;
   email: string;
-  email_verified_at: string | null;
+  email_verified_at: string;
+  is_first_login: number;
+  current_billing_id: number;
   created_at: string;
   updated_at: string;
-  roles?: [];
-  permissions?: [];
+  details: UserDetails;
+  plan: Plan | null;
+  roles: any[]; // You may need to define the structure for roles and permissions
+  permissions: any[];
+  current_billing: billing | null;
 }
 
 export const profileSchema = z.object({
   name: z.string().min(3, "length should be greater or equal to 3"),
   email: z.string().email("Email not valide"),
 });
+
+// onboardingSchema 
+
+export const onboardingSchema = z.object({
+  website: z.string().url({ message: "Invalid url" }),
+});  

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\SecretKeyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -11,10 +12,12 @@ use App\Services\AuthService;
 class SecretKeyController extends Controller
 {
     protected $authService;
+    protected SecretKeyService $secretKeyService;
 
-    public function __construct(AuthService $authService)
+    public function __construct(AuthService $authService , SecretKeyService $secretKeyService)
     {
         $this->authService = $authService;
+        $this->secretKeyService = $secretKeyService;
     }
     public function index(Request $request)
     {
@@ -22,7 +25,7 @@ class SecretKeyController extends Controller
 
         $user = $this->getUserOrFail($request);
 
-        $secretKeys = $user->secretKeys()->paginate($perPage);
+        $secretKeys = $this->secretKeyService->index($request->all(), $perPage , ['user_id' => $user->id] ,[] , []);
 
         return response()->json($secretKeys, 200);
     }
@@ -33,7 +36,9 @@ class SecretKeyController extends Controller
 
         $user = $this->getUserOrFail($request);
 
-        $user->secretKeys()->create(['secret_key' => $secretKey]);
+        $data = ['secret_key' => $secretKey , 'user_id' => $user->id];
+
+        $this->secretKeyService->store($data);
 
         return response()->json(['secret_key' => $secretKey], 200);
        
@@ -41,7 +46,7 @@ class SecretKeyController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $secretKey = SecretKey::find($id);
+        $secretKey = $this->secretKeyService->show($id);
 
         if (!$secretKey) {
             return response()->json(['message' => 'Secret key not found'], 404);
@@ -53,7 +58,7 @@ class SecretKeyController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        $secretKey->delete();
+        $this->secretKeyService->destroy($id);
 
         return response()->json(['message' => 'Secret key deleted successfully'], 200);
     }

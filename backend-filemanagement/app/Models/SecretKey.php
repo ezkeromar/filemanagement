@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class SecretKey extends Model
 {
-    protected $fillable = ['secret_key'];
+    protected $fillable = ['secret_key', 'user_id'];
 
     public function user()
     {

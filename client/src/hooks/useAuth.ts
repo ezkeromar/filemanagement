@@ -53,7 +53,6 @@ const useAuth = (): UseAuthReturnType => {
       if (decryptedToken) {
         fetchUserData();
       } else {
-        localStorage.removeItem("token");
         setIsError(true);
         setIsAuthenticated(false);
       }

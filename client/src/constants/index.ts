@@ -11,9 +11,19 @@ export const adminHeaderLinks = [
 
 export const adminSidebarTopLinks = [
   {
+    label: "Dashboard",
+    route: "/dashboard",
+    imgURL: "/icons/dashboard.png",
+  },
+  {
     label: "Documents",
     route: "/dashboard/documents",
     imgURL: "/icons/dashboard.png",
+  },
+  {
+    label: "Billing",
+    route: "/dashboard/billing",
+    imgURL: "/icons/billing.png",
   },
   
 ];

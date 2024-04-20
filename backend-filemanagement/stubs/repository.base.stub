@@ -1,0 +1,17 @@
+<?php
+
+namespace {{NAMESPACE}};
+
+use App\Interfaces\{{CLASSNAME}}RepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
+
+class {{CLASSNAME}}Repository implements {{CLASSNAME}}RepositoryInterface
+{
+  protected $model;
+
+  public function __construct(Model $model)
+  {
+    $this->model = $model;
+  }
+
+}

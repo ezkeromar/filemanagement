@@ -130,6 +130,7 @@ export default function Documents() {
         links={documents?.links ?? []}
         displayPerPage={true}
         onPageChange={setPage}
+        onPerPageChange={setPerPage}
       />
       <StoreDocument
         isOpen={isDocumentDialogOpen}

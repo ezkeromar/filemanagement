@@ -3,6 +3,7 @@ import Sidebar from "@/components/layout/admin/Sidebar";
 import Header from "@/components/layout/admin/Header";
 
 
+
 export default async function AdminLayout({
   children,
 }: {
@@ -14,7 +15,10 @@ export default async function AdminLayout({
   return (
     <div className="relative overflow-y-hidden h-screen max-w-7xl mx-auto flex">
       <div className="z-[-1] absolute h-full w-full top-0 left-0">
+      <Image src="/images/bg-layout.png" alt="bg-img" fill />
+
       </div>
+
       <Header />
       <Sidebar/>
       <main

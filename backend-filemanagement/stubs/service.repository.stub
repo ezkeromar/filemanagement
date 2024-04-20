@@ -1,0 +1,16 @@
+<?php
+
+namespace {{NAMESPACE}};
+
+use App\Interfaces\RepositoryInterfaces\{{CLASSNAME}}RepositoryInterface;
+use App\Interfaces\ServiceInterfaces\{{CLASSNAME}}ServiceInterface;
+
+class {{CLASSNAME}}Service extends BaseResourceService implements {{CLASSNAME}}ServiceInterface
+{
+  protected $repository;
+
+  public function __construct({{CLASSNAME}}RepositoryInterface $repository)
+  {
+    $this->repository = $repository;
+  }
+}

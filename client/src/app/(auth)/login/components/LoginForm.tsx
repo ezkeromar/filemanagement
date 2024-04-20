@@ -39,7 +39,7 @@ import useAuth from "@/hooks/useAuth";
 
 
 export function LoginForm() {
-  const { login } = useAuth(); 
+  const { login  , user} = useAuth(); 
 
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,7 +56,13 @@ export function LoginForm() {
     setIsSubmitting(false);
     if (response) {
       toast({ title: "You are successfully signed in." });
-      router.push("/dashboard/documents");
+
+      if(user && user.is_first_login === 1) {
+      router.push("/onboarding");
+      }
+      else {
+        router.push("/dashboard");
+      }
 
     } else {
       toast({ title: "Failed to sign in. Please try again." });

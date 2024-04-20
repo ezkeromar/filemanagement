@@ -1,0 +1,10 @@
+<?php
+
+namespace {{NAMESPACE}};
+
+use App\Interfaces\BaseResourceServiceInterface;
+
+interface {{CLASSNAME}}ServiceInterface extends BaseResourceServiceInterface
+{
+    //
+}
