@@ -20,11 +20,12 @@ export default function MobileNavbar() {
       <SheetTrigger asChild>
         <AlignRight
           size={36}
+          color="black"
           className="transition-all hover:scale-110 sm:hidden"
         />
       </SheetTrigger>
-      <SheetContent className="bg-black">
-        <Logo className="scale-110" />
+      <SheetContent className="bg-white">
+        <Logo className="scale-110 " />
         <nav className="flex flex-col gap-4 mt-4">
           {navbarLinks.map((item) => {
             const isActive =
@@ -35,7 +36,7 @@ export default function MobileNavbar() {
               <SheetClose key={item.route} asChild>
                 <Link
                   href={item.route}
-                  className={` text-gray-300 transition-all hover:scale-105 ${
+                  className={` text-gray-900 transition-all hover:scale-105 ${
                     isActive && " underlineLink scale-105 font-bold"
                   }`}
                 >

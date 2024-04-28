@@ -5,4 +5,5 @@ return [
     Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
     App\Providers\RepositoryServiceProvider::class,
 
+
 ];

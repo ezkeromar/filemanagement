@@ -75,27 +75,35 @@ export const decryptData = (encryptedData: string): Data | null => {
   }
   return decryptedData;
 };
-
-type ConversionUnit = 'gb' | 'mb' | 'byte';
+type ConversionUnit = 'GB' | 'MB' | 'BYTE' | 'TB';
 
 export const convertSize = (value: number, from: ConversionUnit, to: ConversionUnit): number => {
     // Define conversion factors
     const conversionFactors: { [key in ConversionUnit]: { [key in ConversionUnit]: number } } = {
-      'gb': {
-        'gb': 1,
-        'mb': 1024,
-        'byte': 1024 * 1024 * 1024
-      },
-      'mb': {
-        'gb': 1 / 1024,
-        'mb': 1,
-        'byte': 1024 * 1024
-      },
-      'byte': {
-        'gb': 1 / (1024 * 1024 * 1024),
-        'mb': 1 / (1024 * 1024),
-        'byte': 1
-      }
+        'GB': {
+            'TB': 1 / 1024,
+            'GB': 1,
+            'MB': 1024,
+            'BYTE': 1024 * 1024 * 1024
+        },
+        'MB': {
+            'TB': 1 / (1024 * 1024),
+            'GB': 1 / 1024,
+            'MB': 1,
+            'BYTE': 1024 * 1024
+        },
+        'BYTE': {
+            'TB': 1 / (1024 * 1024 * 1024 * 1024),
+            'GB': 1 / (1024 * 1024 * 1024),
+            'MB': 1 / (1024 * 1024),
+            'BYTE': 1
+        },
+        'TB': {
+            'TB': 1,
+            'GB': 1024,
+            'MB': 1024 * 1024,
+            'BYTE': 1024 * 1024 * 1024
+        }
     };
 
     if (!conversionFactors[from] || !conversionFactors[from][to]) {
@@ -104,7 +112,5 @@ export const convertSize = (value: number, from: ConversionUnit, to: ConversionU
 
     return value * conversionFactors[from][to];
 }
-
-
 
 

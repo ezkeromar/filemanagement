@@ -13,7 +13,7 @@ type UseAuthReturnType = {
   user: any;
   isError: boolean;
   isAuthenticated: boolean;
-  login: (data: TLogin) => Promise<boolean>;
+  login: (data: TLogin) => Promise<any>;
   logout: () => Promise<boolean>;
   register: (
     data: TRegister,
@@ -70,11 +70,11 @@ const useAuth = (): UseAuthReturnType => {
         setUser(response.data.user);
         setIsError(false);
         setIsAuthenticated(true);
-        return true;
+        return user;
       } else {
         setIsError(true);
         setIsAuthenticated(false);
-        return false;
+        return null
       }
     } catch (error: any) {
       if (error.response && error.response.status === 422) {

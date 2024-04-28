@@ -1,5 +1,8 @@
 {
     "[php]": {
         "editor.defaultFormatter": "Jota0222.multi-formatter"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }

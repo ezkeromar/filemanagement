@@ -23,7 +23,7 @@ class BaseResourceService implements BaseResourceServiceInterface
         $this->fileUpload = $fileUpload;
     }
 
-    public function index(array $data = [], int $paginate = 10,array $where = [] ,  array $with = [], array $withCount = [])
+        public function index(array $data = [], int $paginate = 10,array $where = [] ,  array $with = [], array $withCount = [])
     {
         try {
             return $this->repository->filter($data, $paginate, $where, $with, $withCount);

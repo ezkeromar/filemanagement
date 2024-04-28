@@ -17,9 +17,12 @@ class Plan extends Model
         'name',
         'description',
         'price',
+        "storage_unit",
         'storage_unit',
         'currency',
         'billing_interval',
+        'max_image_count',
+        "max_3d_model_count",
         'is_active',
     ];
 

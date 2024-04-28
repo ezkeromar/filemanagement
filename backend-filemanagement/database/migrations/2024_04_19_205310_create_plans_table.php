@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('currency');
             $table->string('billing_interval'); // anuual, monthly
             $table->boolean('is_active')->default(true);
+            $table->integer('max_image_count')->nullable();
+            $table->integer('max_3d_model_count')->nullable();
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\Billing;
+use App\Models\Document;
 use App\Models\Plan;
 use App\Models\User;
 use App\Services\BillingService;
@@ -222,6 +223,7 @@ class AuthController extends Controller
     if ($billing && $billing->billable_type === "App\Models\Plan") {
         $plan = $this->getPlanDetails($billing);
         $user->details = $this->calculateBillingDetails($billing, $plan);
+        $user->document_details = $this->documentDetails($user, $plan);
         $user->plan = $plan;
     } else {
         $user->plan = null;
@@ -240,6 +242,7 @@ private function getUserBilling($user): ?Billing
 {
     return $user->currentBilling;
 }
+
 
 private function getPlanDetails($billing): ?Plan
 {
@@ -266,6 +269,17 @@ private function calculateBillingDetails($billing, $plan): array
             'percentage' => $percentage,
         ];
     }
+    return $details;
+}
+
+public function documentDetails($user , $plan)
+{
+    $size = Document::where('user_id', $user->id)->sum('size');
+    $details = [
+        "size" => $size,
+        "quantity" => $plan->quantity ?? 0,
+        "storage_unit" => $plan->storage_unit ?? "MB",
+    ];
     return $details;
 }
 

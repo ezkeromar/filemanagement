@@ -53,6 +53,11 @@ interface UserDetails {
   days: number;
   percentage: number;
 }
+interface DocumentDetails {
+  size: number;
+  quantity: number;
+  storageUnit: string;
+}
 
 export interface User {
   id: number;
@@ -65,6 +70,7 @@ export interface User {
   updated_at: string;
   details: UserDetails;
   plan: Plan | null;
+  document_details: DocumentDetails;
   roles: any[]; // You may need to define the structure for roles and permissions
   permissions: any[];
   current_billing: billing | null;

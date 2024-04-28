@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Interfaces\RepositoryInterfaces\testRepositoryInterface;
+use App\Repositories\testRepository;
 use App\Interfaces\RepositoryInterfaces\PlanRepositoryInterface;
 use App\Interfaces\RepositoryInterfaces\SecretKeyRepositoryInterface;
 use App\Repositories\PlanRepository;
@@ -18,9 +20,11 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+      $this->app->bind(testRepositoryInterface::class, testRepository::class);
       $this->app->bind(SecretKeyRepositoryInterface::class, SecretKeyRepository::class);
       $this->app->bind(PlanRepositoryInterface::class, PlanRepository::class);
       $this->app->bind(BillingRepositoryInterface::class, BillingRepository::class);
+      
         
     }
 

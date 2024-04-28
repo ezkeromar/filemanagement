@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api();
         $middleware->alias([
             'auth' => AuthenticateWithApiOrSecretKey::class,
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

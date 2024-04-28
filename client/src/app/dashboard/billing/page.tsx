@@ -1,5 +1,5 @@
 'use client';
-import RadialProgressBar from "./components/RadialProgressBar";
+import RadialProgressBar from "@/components/RadialProgressBar";
 import SubscriptionInfo from "./components/SubscriptionInfo";
 import {
   Table,

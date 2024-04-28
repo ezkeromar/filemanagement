@@ -18,7 +18,7 @@ export default function NavbarLinks() {
           <Link
             key={item.route}
             href={item.route}
-            className={` text-gray-300 transition-all hover:scale-105 ${
+            className={` text-black transition-all hover:scale-105 ${
               isActive && " underlineLink scale-105 font-bold"
             }`}
           >

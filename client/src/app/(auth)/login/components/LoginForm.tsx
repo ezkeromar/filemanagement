@@ -57,7 +57,7 @@ export function LoginForm() {
     if (response) {
       toast({ title: "You are successfully signed in." });
 
-      if(user && user.is_first_login === 1) {
+      if(response && response.is_first_login === 1) {
       router.push("/onboarding");
       }
       else {

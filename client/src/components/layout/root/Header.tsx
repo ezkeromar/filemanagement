@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header
       className={`snap-none shadow-2xl z-50 transition-all ease duration-350 top-0 left-0 w-full flex-between gap-6 p-3 sticky ${
-        isScroll ? "bg-[#0b0b0c]" : "bg-transparent"
+        isScroll ? "bg-slate-100" : "bg-transparent"
       }`}
     >
       <Logo className="transition-all hover:scale-105" />
@@ -38,7 +38,7 @@ export default function Header() {
         <NavbarLinks />
       </nav>
       <div className="flex-end gap-4">
-        <Link href="/admin">
+        <Link href="/dashboard">
           <Button size="sm" className="primary-bg-gradient">
             Try free trial
           </Button>

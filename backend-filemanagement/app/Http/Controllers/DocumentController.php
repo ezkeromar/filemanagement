@@ -7,10 +7,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Document;
 use App\Services\AuthService;
+use Intervention\Image\Laravel\Facades\Image;
 
 class DocumentController extends Controller
 {
     protected $authService;
+
+    private $imageTypes = [
+        'jpg',
+        'jpeg',
+        'png',
+        'gif',
+        'bmp',
+        'webp',
+        'tif',
+        'tiff',
+    ];
+    
 
     public function __construct(AuthService $authService)
     {
@@ -78,21 +91,37 @@ class DocumentController extends Controller
 
     private function createDocument($file, $user)
     {
+
         $size = $file->getSize();
-        
         $path = $file->store('public/documents');
         $fileName = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
 
-
-
+        $width = request()->get('width' , 300);
+        $height = request()->get('height' , 300);
+            
+        $mime = in_array($extension, $this->imageTypes) ? 'image/'.$extension : $file->getMimeType();
+        
         $document = new Document();
         $document->name = $fileName;
         $document->user_id = $user->id;
         $document->path = str_replace('public/', '', $path);
+
+        if (strpos($mime, 'image') !== false) {
+            $image = Image::read(storage_path('app/'.$path));
+
+            $image->resize($width, $height, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+    
+            $image->save(storage_path('app/'.$path), 100);
+        }
+        
         $document->url = $this->generateUrl($path);
         $document->size = $size;
+        $document->mime = $mime;
         $document->save();
-
+    
         return $document;
     }
 

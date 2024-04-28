@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Interfaces\ServiceInterfaces\PlanServiceInterface;
+use App\Interfaces\ServiceInterfaces\testServiceInterface;
+use App\Services\PlanService;
+use App\Services\testService;
 use App\Interfaces\ServiceInterfaces\SecretKeyServiceInterface;
 use App\Services\SecretKeyService;
 use App\InterfacePlanrviceInterfaces\PlanageServiceInterface;
@@ -19,7 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // 'Image' => Intervention\Image\Facades\Image::class
+
+        $this->app->bind(SecretKeyServiceInterface::class, SecretKeyService::class);
+        $this->app->bind(PlanServiceInterface::class, PlanService::class);
+        $this->app->bind(BillingServiceInterface::class, BillingService::class);
     }
 
     /**
