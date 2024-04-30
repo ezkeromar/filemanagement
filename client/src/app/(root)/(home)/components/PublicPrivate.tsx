@@ -3,7 +3,10 @@ import Image from "next/image";
 
 export default function PublicPrivate({ className }: { className?: string }) {
   return (
-    <section className="py-10 flex justify-center" style={{ borderBottom: "3px dotted #e5ecfa" }}>
+    <section
+      className="py-10 flex justify-center"
+      style={{ borderBottom: "3px dotted #e5ecfa" }}
+    >
       <div className="grid max-w-screen-xl px-2 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-black">
@@ -18,22 +21,24 @@ export default function PublicPrivate({ className }: { className?: string }) {
           </p>
           <div className=" ">
             <div className="flex">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
+              <div className="w-[30px]">
+                <CircleCheckBig color="#7c3aed" size={28} className="" />
+              </div>{" "}
               <p className="ml-2 flex gap-2 text-gray-500">
-                <b className="text-black">Public file access:</b>{" "}
                 <span className="text-gray-500">
-                  {" "}
+                  <b className="text-black">Public file access : </b>
                   serve public assets for your app or website.
                 </span>
               </p>
             </div>
-            <br />
-            <div className="flex">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
+            <div className="flex mt-4">
+              <div className="w-[30px]">
+                <CircleCheckBig color="#7c3aed" size={28} className="" />
+              </div>{" "}
               <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl">
                   {" "}
-                  <b className="text-black">Private file access: </b> use JWTs
+                  <b className="text-black">Private file access : </b> use JWTs
                   to authorize uploads and downloads via your own API.
                 </span>
               </p>
@@ -47,7 +52,6 @@ export default function PublicPrivate({ className }: { className?: string }) {
             alt="Image"
             height={400}
             className="m-auto"
-
             width={300}
             priority
           />

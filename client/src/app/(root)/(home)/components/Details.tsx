@@ -23,7 +23,7 @@ export default function Details({ className }: { className?: string }) {
         <div className=" lg:mt-0 lg:col-span-5  ">
           <div className="flex">
             <div className="w-[30px]">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
             </div>
             <div className="w-full ">
               <p className="ml-2 flex gap-2 text-gray-500">
@@ -41,7 +41,7 @@ export default function Details({ className }: { className?: string }) {
           </div>
           <div className="flex py-5">
             <div className="w-[30px]">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
             </div>
             <div className="w-full ">
               <p className="ml-2 flex gap-2 text-gray-500">
@@ -59,7 +59,7 @@ export default function Details({ className }: { className?: string }) {
           </div>
           <div className="flex py-5">
             <div className="w-[30px]">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
             </div>
             <div className="w-full ">
               <p className="ml-2 flex gap-2 text-gray-500">
@@ -73,7 +73,7 @@ export default function Details({ className }: { className?: string }) {
           </div>
           <div className="flex py-5">
             <div className="w-[30px]">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
             </div>
             <div className="w-full ">
               <p className="ml-2 flex gap-2 text-gray-500">

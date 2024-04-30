@@ -20,21 +20,22 @@ export default function BlurHash({ className }: { className?: string }) {
 
           <div className=" ">
             <div className="flex">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
-              <p className="ml-2 flex gap-2 text-gray-500">
-                <b className="text-black">BlurHash:</b>{" "}
+            <div className="w-[30px]">
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
+            </div>              <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500">
-                  {" "}
-                  for instant image placeholders.{" "}
+                <b className="text-black">BlurHash : </b>
+                  
+                  for instant image placeholders.
                 </span>
               </p>
             </div>
             <br />
             <div className="flex">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
-              <p className="ml-2 flex gap-2 text-gray-500">
+            <div className="w-[30px]">
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
+            </div>              <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl">
-                  {" "}
                   <b className="text-black">Improve performance : </b> improve
                   your website&apos;s Google PageSpeed score by reducing
                   Largest Contentful Paint (LCP) with BlurHashes.
@@ -43,8 +44,9 @@ export default function BlurHash({ className }: { className?: string }) {
             </div>
             <br />
             <div className="flex">
-              <CircleCheckBig color="#7c3aed" size={32} className="" />
-              <p className="ml-2 flex gap-2 text-gray-500">
+            <div className="w-[30px]">
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
+            </div>              <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl">
                   {" "}
                   <b className="text-black">External storage: </b> map any

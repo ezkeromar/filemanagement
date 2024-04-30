@@ -8,7 +8,7 @@ export default function Uploadwidget({ className }: { className?: string }) {
       <div className="grid max-w-screen-xl px-2 m-auto pt-8 lg:gap-8 xl:gap-0 lg:pt-16 lg:grid-cols-12">
         <h1 className=" text-black  text-6xl font-extrabold tracking-tight col-span-12 flex">
           Why developers
-          <Heart size={64} color="#7c3aed" className="pb-4 " />
+          <Heart size={50} color="#7c3aed" className="pb-4 " />
           love us
         </h1>
       </div>
