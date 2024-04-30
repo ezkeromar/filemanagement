@@ -13,7 +13,7 @@ export default function CDN({ className }: { className?: string }) {
             Use Ar-display as your CDN
             <br />
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+          <p className="max-w-xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
             <b className="text-black">Did you know: </b> you can bring your
             existing storage to Ar-display, giving you realtime media processing
             APIs and an ultra-fast CDN, without needing to move your files.{" "}
