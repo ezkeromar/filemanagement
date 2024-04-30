@@ -3,7 +3,10 @@ import Image from "next/image";
 
 export default function BlurHash({ className }: { className?: string }) {
   return (
-    <section className=" py-10 flex justify-center " style={{ borderBottom: "3px dotted #e5ecfa" }}>
+    <section
+      className=" py-10 flex justify-center "
+      style={{ borderBottom: "3px dotted #e5ecfa" }}
+    >
       <div className="grid max-w-screen-xl px-2 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-black">
@@ -17,7 +20,7 @@ export default function BlurHash({ className }: { className?: string }) {
 
           <div className=" ">
             <div className="flex">
-                <CircleCheckBig color="#7c3aed" size={32} className="" />
+              <CircleCheckBig color="#7c3aed" size={32} className="" />
               <p className="ml-2 flex gap-2 text-gray-500">
                 <b className="text-black">BlurHash:</b>{" "}
                 <span className="text-gray-500">
@@ -33,8 +36,8 @@ export default function BlurHash({ className }: { className?: string }) {
                 <span className="text-gray-500 max-w-xl">
                   {" "}
                   <b className="text-black">Improve performance : </b> improve
-                  your website's Google PageSpeed score by reducing Largest
-                  Contentful Paint (LCP) with BlurHashes.
+                  your website&apos;s Google PageSpeed score by reducing
+                  Largest Contentful Paint (LCP) with BlurHashes.
                 </span>
               </p>
             </div>
@@ -57,7 +60,6 @@ export default function BlurHash({ className }: { className?: string }) {
             alt="Image"
             height={760}
             className="m-auto"
-
             width={540}
             priority
           />

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Details({ className }: { className?: string }) {
   return (
-    <section className="" >
+    <section className="">
       <div className="grid max-w-screen-xl px-2 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-black">
@@ -47,12 +47,13 @@ export default function Details({ className }: { className?: string }) {
               <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl text-lg">
                   <b className="text-black">No monthly re-billing: </b>no charge
-                  for image optimizations you've already performed.
+                  for image optimizations you&apos;ve already performed.
                 </span>
               </p>
               <p className="text-gray-300 max-w-xl text-sm">
                 (Many vendors charge for the number of optimized images
-                requested each month, even if you've optimized them before.)
+                requested each month, even if you&apos;ve optimized them
+                before.)
               </p>
             </div>
           </div>
@@ -63,8 +64,8 @@ export default function Details({ className }: { className?: string }) {
             <div className="w-full ">
               <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl text-lg">
-                  <b className="text-black">Adjustable costs : </b>configure 
-                  processing time vs. bandwidth to suit your app's traffic
+                  <b className="text-black">Adjustable costs : </b>configure
+                  processing time vs. bandwidth to suit your app&apos;s traffic
                   profile.
                 </span>
               </p>

@@ -44,8 +44,8 @@ export default function Cards({
 
   return (
     <>
-      {EnterprisePricings.map((item) => (
-        <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      {EnterprisePricings.map((item, i) => (
+        <div key={i} className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <Image src={item.icon} alt="icon" width={46} height={46} />
           <a href="#">
             <h5 className="mb-2 text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">

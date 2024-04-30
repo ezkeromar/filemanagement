@@ -58,6 +58,7 @@ export default function PricePlan({
             </div>
             {pricing.map((price, index) => (
               <p 
+              key={index}
               className={`text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 ${
                 index % 2 === 0 ? 'bg-gray-100' : ''
               }`}
@@ -115,6 +116,7 @@ export default function PricePlan({
             </div>
             {pricing.map((price, index) => (
               <p 
+              key={index}
               className={`text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 ${
                 index % 2 === 0 ? 'bg-gray-100' : ''
               }`}
@@ -170,6 +172,7 @@ export default function PricePlan({
             
             {pricing.map((price, index) => (
               <p 
+              key={index}
               className={`text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 ${
                 index % 2 === 0 ? 'bg-gray-100' : ''
               }`}
@@ -224,6 +227,7 @@ export default function PricePlan({
 
             {pricing.map((price, index) => (
               <p 
+              key={index}
               className={`text-gray-600 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300 ${
                 index % 2 === 0 ? 'bg-gray-100' : ''
               }`}

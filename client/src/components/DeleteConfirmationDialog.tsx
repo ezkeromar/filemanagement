@@ -42,7 +42,7 @@ export function DeleteConfirmationDialog({ isOpen, onClose, onDelete }: DeleteCo
         
         <DialogFooter>
           <Button variant="default" onClick={handleClose}>Cancel</Button>
-          <Button variant="danger" onClick={handleDelete}>Delete</Button>
+          {/* <Button variant="danger" onClick={handleDelete}>Delete</Button> */}
         </DialogFooter>
       </DialogContent>
     </Dialog>

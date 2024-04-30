@@ -22,9 +22,9 @@ export default function Uploadwidget({ className }: { className?: string }) {
             Accept file uploads from your users in seconds.
           </p>
           <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-            Ar-display's embeddable Upload Widget allows you to receive any file
-            type from your users, and supports image cropping, video previews,
-            PDF previews, and more.
+            Ar-display&apos;s embeddable Upload Widget allows you to receive any
+            file type from your users, and supports image cropping, video
+            previews, PDF previews, and more.
           </p>
           <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
             Enjoy modern SDKs that install in 7 lines of code:
@@ -36,7 +36,6 @@ export default function Uploadwidget({ className }: { className?: string }) {
             alt="Image"
             height={760}
             className="m-auto"
-
             width={540}
             priority
           />

@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export const adminHeaderLinks = [
   {
     label: "Translation",
@@ -52,7 +54,7 @@ export const footerLinks = [
 export const navbarLinks = [
   { route: "/about-us", label: "About" },
   { route: "/pricing", label: "Pricing" },
-    { route: "/privacy-policy", label: "Policies" },
+  { route: "/privacy-policy", label: "Policies" },
 
   { route: "/contact-us", label: "Contact us" },
 ];
@@ -68,10 +70,20 @@ export const svgLandingPage = [
   "/svg/replicate.svg",
 ];
 
-export const pricingPlans = [
+export const pricingPlans: {
+  pricing: {
+    title: string;
+    name: string;
+    Basic: string | boolean;
+    Plus: string | boolean;
+    Advanced: string | boolean;
+    Enterprise: string | boolean;
+  }[];
+}[] = [
   {
     pricing: [
       {
+        title: "",
         name: "CDN locations",
         Basic: "100",
         Plus: "100",
@@ -79,6 +91,7 @@ export const pricingPlans = [
         Enterprise: "600+",
       },
       {
+        title: "",
         name: "Storage",
         Basic: "10 GB",
         Plus: "50 GB",
@@ -86,6 +99,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Bandwidth",
         Basic: "10 GB",
         Plus: "50 GB",
@@ -93,6 +107,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Processing",
         Basic: "1 Hour",
         Plus: "5 Hours",
@@ -100,6 +115,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Images",
         Basic: "~6,000",
         Plus: "~30,000",
@@ -107,6 +123,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Documents",
         Basic: "~12,000",
         Plus: "~60,000",
@@ -114,6 +131,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Video thumbnails",
         Basic: "~300",
         Plus: "~1,500",
@@ -121,6 +139,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Videos",
         Basic: "40 Encoding Mins",
         Plus: "200 Encoding Mins",
@@ -128,6 +147,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Audio",
         Basic: "80 Encoding Mins",
         Plus: "400 Encoding Mins",
@@ -135,6 +155,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Monthly uploads",
         Basic: "20,000",
         Plus: "100,000",
@@ -142,6 +163,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Max upload size",
         Basic: "50 MB",
         Plus: "500 MB",
@@ -149,6 +171,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Monthly downloads",
         Basic: "unlimited",
         Plus: "unlimited",
@@ -156,6 +179,7 @@ export const pricingPlans = [
         Enterprise: "unlimited",
       },
       {
+        title: "",
         name: "Upload widget",
         Basic: true,
         Plus: true,
@@ -163,6 +187,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "File storage",
         Basic: true,
         Plus: true,
@@ -170,6 +195,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "File processing",
         Basic: true,
         Plus: true,
@@ -177,6 +203,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Traffic management",
         Basic: true,
         Plus: true,
@@ -184,6 +211,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Rate limiting",
         Basic: true,
         Plus: true,
@@ -191,6 +219,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Traffic limiting",
         Basic: true,
         Plus: true,
@@ -198,6 +227,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "File size limiting",
         Basic: true,
         Plus: true,
@@ -205,6 +235,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "TTLs / Expiring links",
         Basic: true,
         Plus: true,
@@ -212,6 +243,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "IP Blacklisting",
         Basic: true,
         Plus: true,
@@ -219,6 +251,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Usage monitoring",
         Basic: true,
         Plus: true,
@@ -226,6 +259,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "SSL (HTTPS)",
         Basic: true,
         Plus: true,
@@ -233,6 +267,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Bytescale SDKs",
         Basic: true,
         Plus: true,
@@ -240,6 +275,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Lightweight",
         Basic: true,
         Plus: true,
@@ -247,6 +283,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Adaptive chunking",
         Basic: true,
         Plus: true,
@@ -254,6 +291,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Cancellable uploads",
         Basic: true,
         Plus: true,
@@ -261,6 +299,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Progress reporting",
         Basic: true,
         Plus: true,
@@ -268,6 +307,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Bytescale Storage API",
         Basic: true,
         Plus: true,
@@ -275,6 +315,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Upload files",
         Basic: true,
         Plus: true,
@@ -282,6 +323,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "List files",
         Basic: true,
         Plus: true,
@@ -289,6 +331,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Folders",
         Basic: true,
         Plus: true,
@@ -296,6 +339,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Metadata & tags",
         Basic: true,
         Plus: true,
@@ -303,6 +347,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Bytescale Media APIs",
         Basic: true,
         Plus: true,
@@ -310,6 +355,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Image Processing API",
         Basic: true,
         Plus: true,
@@ -317,6 +363,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Video Processing API",
         Basic: true,
         Plus: true,
@@ -324,6 +371,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Audio Processing API",
         Basic: true,
         Plus: true,
@@ -331,6 +379,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Bytescale CDN",
         Basic: true,
         Plus: true,
@@ -338,6 +387,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Media optimization",
         Basic: true,
         Plus: true,
@@ -345,6 +395,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Origin shielding",
         Basic: true,
         Plus: true,
@@ -352,6 +403,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "DDoS protection",
         Basic: true,
         Plus: true,
@@ -359,6 +411,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Edge caching",
         Basic: true,
         Plus: true,
@@ -366,6 +419,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Permanent caching",
         Basic: true,
         Plus: true,
@@ -373,6 +427,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Built-in Storage",
         Basic: true,
         Plus: true,
@@ -380,6 +435,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "External Storage",
         Basic: true,
         Plus: true,
@@ -387,6 +443,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "HTTP Reverse Proxy",
         Basic: true,
         Plus: true,
@@ -394,6 +451,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "AWS S3",
         Basic: false,
         Plus: true,
@@ -401,6 +459,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Cloudflare R2",
         Basic: false,
         Plus: true,
@@ -408,6 +467,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "DigitalOcean Spaces",
         Basic: false,
         Plus: true,
@@ -415,6 +475,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Google Storage",
         Basic: false,
         Plus: true,
@@ -422,6 +483,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Authenticated uploads",
         Basic: false,
         Plus: true,
@@ -429,6 +491,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Authenticated downloads",
         Basic: false,
         Plus: true,
@@ -437,6 +500,7 @@ export const pricingPlans = [
       },
 
       {
+        title: "",
         name: "Support via Email",
         Basic: false,
         Plus: false,
@@ -444,6 +508,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Support via Slack",
         Basic: false,
         Plus: false,
@@ -452,6 +517,7 @@ export const pricingPlans = [
       },
 
       {
+        title: "",
         name: "Custom domain",
         Basic: false,
         Plus: false,
@@ -459,6 +525,7 @@ export const pricingPlans = [
         Enterprise: true,
       },
       {
+        title: "",
         name: "Upload acceleration",
         Basic: false,
         Plus: false,

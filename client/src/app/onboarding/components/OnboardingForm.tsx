@@ -264,8 +264,8 @@ export function OnboardingForm(props: CheckoutFormProps): JSX.Element {
           <div className="mx-auto max-w-6xl px-12 mb-6">
             <div className="flex flex-wrap justify-center gap-3 ">
              
-             {plans.map((plan) => (
-                <label className="cursor-pointer">
+             {plans.map((plan, i) => (
+                <label key={i} className="cursor-pointer">
                   <input
                     type="radio"
                     className="peer sr-only"

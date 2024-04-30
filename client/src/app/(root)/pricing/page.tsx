@@ -18,14 +18,14 @@ export default function Pricing() {
           <section
             className={`flex-center flex-col gap-6 pt-10 ${sectionStyles}`}
           >
-            <PricePlan pricing={plan.pricing}>{plan.title}</PricePlan>
+            <PricePlan pricing={plan.pricing}>{plan.pricing[0].title}</PricePlan>
           </section>
         </Animation>
       ))}
-      <Animation >
+      <Animation>
         <EnterprisePricing className="  snap-center" />
       </Animation>
-      <Animation >
+      <Animation>
         <Accordion className=" min-h-screen snap-center" />
       </Animation>
     </>

@@ -117,14 +117,16 @@ export default function Accordions({ className = "" }: { className?: string }) {
             FREQUENTLY ASKED QUESTIONS
           </span>
           <span className="h2-semibold  text-black text-5xl text-center font-bold m-auto max-w-[700px]">
-            Got questions? We've got answers.
+            Got questions? We&apos;ve got answers.
           </span>
         </div>
 
         <div className="justify-center md:max-w-[900px] m-auto">
           {dataAccordion.map((item, index) => (
             <div key={index} className="mb-8  md:min-w-[900px]">
-              <h2 className="text-2xl font-semibold text-black">{item.title}</h2>
+              <h2 className="text-2xl font-semibold text-black">
+                {item.title}
+              </h2>
               <Accordion type="single" collapsible>
                 {item.items.map((subItem, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
@@ -134,10 +136,10 @@ export default function Accordions({ className = "" }: { className?: string }) {
                     <AccordionContent className="">
                       {subItem.contents.map((content, index) => (
                         <>
-                        <span key={index} className="text-gray-500 text-md">
-                          {content}
-                        </span>
-                        <br/>
+                          <span key={index} className="text-gray-500 text-md">
+                            {content}
+                          </span>
+                          <br />
                         </>
                       ))}
                     </AccordionContent>
@@ -146,7 +148,6 @@ export default function Accordions({ className = "" }: { className?: string }) {
               </Accordion>
             </div>
           ))}
-         
         </div>
       </section>
     </>
