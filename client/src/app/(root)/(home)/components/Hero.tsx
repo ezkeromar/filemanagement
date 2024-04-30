@@ -23,9 +23,10 @@ export default function Hero({ className }: { className?: string }) {
                 Trusted by 1000s of developers to simplify file storage,
                 realtime media processing, and content delivery.
               </p>
+              <div className=" w-full grid sm:flex">
               <Link
                 href="#"
-                className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg primary-bg-gradient hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                className="inline-flex items-center justify-center px-5 py-3 sm:mr-3 mb-2 sm:mb-0 text-base font-medium text-center text-white rounded-lg primary-bg-gradient hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
               >
                 Get started
                 <svg
@@ -47,6 +48,7 @@ export default function Hero({ className }: { className?: string }) {
               >
                 Speak to Sales
               </Link>
+              </div>
             </div>
             <div className="hidden lg:mt-0 lg:col-span-6 lg:flex">
               <Image
