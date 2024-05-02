@@ -100,18 +100,18 @@
 }
 
 .primary-bg-gradient {
-  background: linear-gradient(152deg, #3b37ff 0%, #9b50b4 80%);
+  background: linear-gradient(152deg, #3b37ff 0%, #0679f6 80%);
   transition: all ease-in 300ms;
 }
 .primary-bg-gradient:hover {
   opacity: 0.9;
 }
 .primary-bg-gradient-2 {
-  background: linear-gradient(224deg, #6367fe 30%, #9d04e2 70%);
+  background: linear-gradient(224deg, #3b37ff 30%, #0679f6 70%);
 }
 
 .primary-text-gradient {
-  background: linear-gradient(129deg, #3b37ff 0%, #f1c8ff 80%);
+  background: linear-gradient(129deg, #3b37ff 0%, #16f6fc 80%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
