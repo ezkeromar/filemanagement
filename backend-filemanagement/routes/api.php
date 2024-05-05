@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth'] ], function () {
 
     Route::group(['prefix' => 'documents'], function () {
         Route::post('/store', [DocumentController::class, 'store']);
+        Route::post('/store-multiple', [DocumentController::class, 'storeMultiple']);
         Route::get('/', [DocumentController::class, 'index']);
         Route::get('/find/{id}', [DocumentController::class, 'find']);
         Route::put('/update/{id}', [DocumentController::class, 'update']);
