@@ -34,3 +34,8 @@
 # typescript
 /client/*.tsbuildinfo
 /client/next-env.d.ts
+/node_modules
+/.vscode
+/.vscode/*
+/client/next
+/client/next/*
