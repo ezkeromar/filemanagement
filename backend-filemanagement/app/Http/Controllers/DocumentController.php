@@ -43,6 +43,26 @@ class DocumentController extends Controller
         return response()->json(['message' => 'Document uploaded successfully', 'document' => $document], 200);
     }
 
+    // storeMultiple
+    public function storeMultiple(Request $request) : JsonResponse
+    {
+        $request->validate([
+            'files' => 'required|array',
+            'files.*' => 'file',
+        ]);
+
+        $user = $this->getUserOrFail($request);
+
+        $documents = [];
+
+        foreach ($request->file('files') as $file) {
+            $document = $this->createDocument($file, $user);
+            $documents[] = $document;
+        }
+
+        return response()->json(['message' => 'Documents uploaded successfully', 'documents' => $documents], 200);
+    }
+
     public function index(Request $request)
     {
         $perPage = $request->query('perPage', 10);
