@@ -1,0 +1,525 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My Cool API",
+        "description": "An API of cool stuffs",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "api/billings": {
+            "get": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "List all billings",
+                "description": "Returns a list of all billings for the authenticated user",
+                "operationId": "indexBillings",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "api/billings/store": {
+            "post": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "Create a new billing record",
+                "description": "Creates a new billing record for the authenticated user",
+                "operationId": "storeBilling",
+                "requestBody": {
+                    "description": "Billing data",
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Billing record created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Billing record created successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/billings/show/{id}": {
+            "get": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "Show billing record by ID",
+                "description": "Returns a billing record by its ID for the authenticated user",
+                "operationId": "showBilling",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the billing record to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Billing record not found"
+                    }
+                }
+            }
+        },
+        "api/billings/update/{id}": {
+            "put": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "Update billing record by ID",
+                "description": "Updates an existing billing record by its ID for the authenticated user",
+                "operationId": "updateBilling",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the billing record to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Billing data to update",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Billing record updated successfully"
+                    },
+                    "404": {
+                        "description": "Billing record not found"
+                    }
+                }
+            }
+        },
+        "api/documents/store": {
+            "post": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Upload a single document",
+                "description": "Uploads a single document and returns the uploaded document details",
+                "operationId": "storeDocument",
+                "requestBody": {
+                    "description": "Document file to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Document uploaded successfully"
+                    }
+                }
+            }
+        },
+        "api/documents/store-multiple": {
+            "post": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Upload multiple documents",
+                "description": "Uploads multiple documents and returns the uploaded documents details",
+                "operationId": "storeMultipleDocuments",
+                "requestBody": {
+                    "description": "Array of document files to upload",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "files"
+                                ],
+                                "properties": {
+                                    "files": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "format": "binary"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Documents uploaded successfully"
+                    }
+                }
+            }
+        },
+        "api/documents": {
+            "get": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Get paginated list of user's documents",
+                "description": "Returns a paginated list of documents belonging to the authenticated user",
+                "operationId": "getDocuments",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of documents per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "api/documents/find/{id}": {
+            "get": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Find document by ID",
+                "description": "Returns a single document by its ID if the user owns it",
+                "operationId": "findDocumentById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the document to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Document found and returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Document not found"
+                    },
+                    "403": {
+                        "description": "Unauthorized to access the document"
+                    }
+                }
+            }
+        },
+        "/documents/update/{id}": {
+            "put": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Update document by ID",
+                "description": "Updates an existing document by its ID if the user owns it",
+                "operationId": "updateDocumentById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the document to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "New document file",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Document updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Document updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Document not found"
+                    },
+                    "403": {
+                        "description": "Unauthorized to update the document"
+                    }
+                }
+            }
+        },
+        "/documents/destroy/{id}": {
+            "delete": {
+                "tags": [
+                    "Documents"
+                ],
+                "summary": "Delete document by ID",
+                "description": "Deletes an existing document by its ID if the user owns it",
+                "operationId": "deleteDocumentById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the document to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Document deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Document deleted successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Document not found"
+                    },
+                    "403": {
+                        "description": "Unauthorized to delete the document"
+                    }
+                }
+            }
+        },
+        "api/plans": {
+            "get": {
+                "tags": [
+                    "Plans"
+                ],
+                "summary": "List all plans",
+                "description": "Returns a list of all plans",
+                "operationId": "indexPlans",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "api/plans/store": {
+            "post": {
+                "tags": [
+                    "Plans"
+                ],
+                "summary": "Create a new plan",
+                "description": "Creates a new plan",
+                "operationId": "storePlan",
+                "requestBody": {
+                    "description": "Plan data",
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Plan created successfully"
+                    }
+                }
+            }
+        },
+        "api/plans/show/{id}": {
+            "get": {
+                "tags": [
+                    "Plans"
+                ],
+                "summary": "Show plan by ID",
+                "description": "Returns a plan by its ID",
+                "operationId": "showPlan",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the plan to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "api/plans/update/{id}": {
+            "put": {
+                "tags": [
+                    "Plans"
+                ],
+                "summary": "Update an existing plan",
+                "description": "Update an existing plan",
+                "operationId": "updatePlan",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the plan to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Plan data",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Plan updated successfully"
+                    }
+                }
+            }
+        },
+        "api/secret-keys": {
+            "get": {
+                "tags": [
+                    "Secret Keys"
+                ],
+                "summary": "List all secret keys",
+                "description": "Returns a list of all secret keys",
+                "operationId": "indexSecretKeys",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Number of items per page",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "api/secret-keys/generate": {
+            "post": {
+                "tags": [
+                    "Secret Keys"
+                ],
+                "summary": "Generate a new secret key",
+                "description": "Generates a new secret key",
+                "operationId": "generate SecretKey",
+                "responses": {
+                    "200": {
+                        "description": "Secret key generated successfully"
+                    }
+                }
+            }
+        },
+        "api/secret-keys/{id}": {
+            "delete": {
+                "tags": [
+                    "Secret Keys"
+                ],
+                "summary": "Delete a secret key",
+                "description": "Deletes a secret key",
+                "operationId": "destroySecretKey",
+                "responses": {
+                    "200": {
+                        "description": "Secret key deleted successfully"
+                    }
+                }
+            }
+        }
+    }
+}

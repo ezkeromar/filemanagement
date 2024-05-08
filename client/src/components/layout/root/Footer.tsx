@@ -50,19 +50,19 @@ export default function Footer() {
   }
 
   return (
-    <footer className="w-full flex flex-col gap-6 snap-center py-8 px-3 sm:px-5 border-t-2  bg-blue-950">
+    <footer className="w-full flex flex-col gap-6 snap-center py-8 px-3 sm:px-5   bg-slate-100">
       <div className="grid sm:grid-cols-2 ">
         <div className="grid grid-cols-2 sm:border-r px-2  sm:border-black">
-          {/* {footerLinks.length > 0 &&
+          {footerLinks.length > 0 &&
             footerLinks.map((item) => (
-              // <Link
-              //   key={item.route || ""}
-              //   href={item.route}
-              //   className="hover:text-gray-300 text-[18px] py-2"
-              // >
-              //   {item.label}
-              // </Link>
-            ))} */}
+              <Link
+                key={item.route || ""}
+                href={item.route}
+                className="hover:text-gray-300 text-[18px] py-2"
+              >
+                {item.label}
+              </Link>
+            ))}
         </div>
         <div className=" ml-10 mr-8">
           <div className="flex gap-2">

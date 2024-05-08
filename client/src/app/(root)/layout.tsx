@@ -3,6 +3,7 @@ import Header from "@/components/layout/root/Header";
 // color.css
 // C:\Users\Hamza Tbib\Documents\project hamza\filemanagement\client\src\app\color.css
 import "../color.css";
+import Footer from "@/components/layout/root/Footer";
 
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
         {children}
       </main>
     </div>
-    {/* <Footer /> */}
+    <Footer />
     </>
   );
 }

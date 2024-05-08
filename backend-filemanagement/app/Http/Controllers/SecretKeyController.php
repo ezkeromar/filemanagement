@@ -19,6 +19,35 @@ class SecretKeyController extends Controller
         $this->authService = $authService;
         $this->secretKeyService = $secretKeyService;
     }
+    /**
+     * 
+     * @OA\Tag(
+     *    name="Secret Keys",
+     *   description="Endpoints for managing secret keys"
+     * )
+     */
+
+    /**
+     * @OA\Get(
+     *     path="api/secret-keys",
+     *    operationId="indexSecretKeys",
+     *   tags={"Secret Keys"},
+     * summary="List all secret keys",
+     * description="Returns a list of all secret keys",
+     * @OA\Parameter(
+     *    name="perPage",
+     *  in="query",
+     * description="Number of items per page",
+     * required=false,
+     * @OA\Schema(type="integer")
+     * ),
+     * @OA\Response(
+     *   response=200,
+     * description="Successful operation",
+     * )
+     * )
+     */
+
     public function index(Request $request)
     {
         $perPage = $request->query('perPage', 10);
@@ -29,6 +58,22 @@ class SecretKeyController extends Controller
 
         return response()->json($secretKeys, 200);
     }
+
+    /**
+     * @OA\Post(
+     *     path="api/secret-keys/generate",
+     *    operationId="generate SecretKey",
+     * tags={"Secret Keys"},
+     * summary="Generate a new secret key",
+     * description="Generates a new secret key",
+     * @OA\Response(
+     *   response=200,
+     * description="Secret key generated successfully",
+    *
+    * )
+    * )
+    */
+
 
     public function generate(Request $request)
     {
@@ -43,6 +88,20 @@ class SecretKeyController extends Controller
         return response()->json(['secret_key' => $secretKey], 200);
        
     }
+    /**
+     * @OA\Delete(
+     *    path="api/secret-keys/{id}",
+     *  operationId="destroySecretKey",
+     * tags={"Secret Keys"},
+     * summary="Delete a secret key",
+     * description="Deletes a secret key",
+     * @OA\Response(
+     *   response=200,
+     * description="Secret key deleted successfully",
+     * )
+     * )
+     * 
+     */
 
     public function destroy(Request $request, $id)
     {

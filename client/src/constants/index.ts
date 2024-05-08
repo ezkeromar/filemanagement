@@ -43,12 +43,11 @@ export const bannerImages1 = [
 ];
 
 export const footerLinks = [
-  // { route: "/about-us", label: "About Us" },
-  // { route: "/contact-us", label: "Contact Us" },
-  // { route: "/privacy-policy", label: "Policies" },
-  // { route: "/how-it-works", label: "How it works" },
-  // { route: "/pricing", label: "Pricing" },
-  // { route: "/waitlist", label: "Waitlist" },
+  { route: "/about-us", label: "About Us" },
+  { route: "/contact-us", label: "Contact Us" },
+  { route: "/privacy-policy", label: "Policies" },
+  { route: "/pricing", label: "Pricing" },
+  
 ];
 
 export const navbarLinks = [

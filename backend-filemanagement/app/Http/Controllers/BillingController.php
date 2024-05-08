@@ -20,12 +20,33 @@ class BillingController extends Controller
 
     protected $authService;
 
-    public function __construct(AuthService $authService , BillingService $billingService , PlanService $planService)
+    public function __construct(AuthService $authService, BillingService $billingService, PlanService $planService)
     {
         $this->authService = $authService;
         $this->billingService = $billingService;
         $this->planService = $planService;
     }
+    /**
+     * @OA\Tag(
+     *     name="Billings",
+     *     description="Endpoints for managing billings"
+     * )
+     */
+
+    /**
+     * @OA\Get(
+     *      path="api/billings",
+     *      operationId="indexBillings",
+     *      tags={"Billings"},
+     *      summary="List all billings",
+     *      description="Returns a list of all billings for the authenticated user",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          
+     *      )
+     * )
+     */
 
     public function index(Request $request): JsonResponse
     {
@@ -33,11 +54,32 @@ class BillingController extends Controller
 
         $perPage = $request->query('perPage', 10);
 
-        $billings = $this->billingService->index($request->all(), $perPage , ['user_id' => $user->id] ,[] , []);
+        $billings = $this->billingService->index($request->all(), $perPage, ['user_id' => $user->id], [], []);
 
 
         return response()->json($billings, 200);
     }
+
+    /**
+     * @OA\Post(
+     *      path="api/billings/store",
+     *      operationId="storeBilling",
+     *      tags={"Billings"},
+     *      summary="Create a new billing record",
+     *      description="Creates a new billing record for the authenticated user",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          description="Billing data",
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Billing record created successfully",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Billing record created successfully"),
+     *          )
+     *      )
+     * )
+     */
 
     public function store(BillingRequest $request): JsonResponse
     {
@@ -45,12 +87,37 @@ class BillingController extends Controller
 
         $package = $this->planService->show($request->billable_id);
 
-            $request->merge(['user_id' => $user->id , 'unit_amount' => $package->price , 'currency' => $package->currency ,"description" => $package->name]);
-        $billing =  $this->billingService->store($request->all());
-       
+        $request->merge(['user_id' => $user->id, 'unit_amount' => $package->price, 'currency' => $package->currency, "description" => $package->name]);
+        $billing = $this->billingService->store($request->all());
+
 
         return response()->json(['message' => 'Billing record created successfully', 'billing' => $billing], 201);
     }
+    /**
+     * @OA\Get(
+     *      path="api/billings/show/{id}",
+     *      operationId="showBilling",
+     *      tags={"Billings"},
+     *      summary="Show billing record by ID",
+     *      description="Returns a billing record by its ID for the authenticated user",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="ID of the billing record to retrieve",
+     *          required=true,
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Billing record not found"
+     *      )
+     * )
+     */
 
     public function show($id, Request $request): JsonResponse
     {
@@ -61,13 +128,43 @@ class BillingController extends Controller
         return response()->json(['billing' => $billing], 200);
     }
 
+    /**
+ * @OA\Put(
+ *      path="api/billings/update/{id}",
+ *      operationId="updateBilling",
+ *      tags={"Billings"},
+ *      summary="Update billing record by ID",
+ *      description="Updates an existing billing record by its ID for the authenticated user",
+ *      @OA\Parameter(
+ *          name="id",
+ *          in="path",
+ *          description="ID of the billing record to update",
+ *          required=true,
+ *          @OA\Schema(type="integer")
+ *      ),
+ *      @OA\RequestBody(
+ *          required=true,
+ *          description="Billing data to update",
+ *      ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="Billing record updated successfully",
+ *          
+ *      ),
+ *      @OA\Response(
+ *          response=404,
+ *          description="Billing record not found"
+ *      )
+ * )
+ */
+
     public function update(BillingRequest $request, $id): JsonResponse
     {
         $billing = $this->billingService->first(['session_id' => $id]);
-        
+
         $this->checkOwnership($billing, $request);
 
-         $this->billingService->update($billing->id, $request->only(['status', 'date_paid']));
+        $this->billingService->update($billing->id, $request->only(['status', 'date_paid']));
 
         $user = $this->getUserOrFail($request);
         if ($request->status === 'completed') {
@@ -99,3 +196,6 @@ class BillingController extends Controller
         }
     }
 }
+
+
+
