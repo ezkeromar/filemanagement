@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 
@@ -17,10 +18,12 @@ export function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
-      {adminSidebarTopLinks.map((item) => {
+
+      {adminSidebarTopLinks.map((item , index) => {
           const isActive = pathname === item.route;
           return (
             <Link
+              key={index}
               href={item.route}
               className={`text-sm font-medium transition-colors hover:text-primary py-1 rounded-lg ${isActive && " bg-slate-200 px-2"}`}
             >
@@ -28,10 +31,11 @@ export function MainNav({
             </Link>
           );
       })}
-      {adminSidebarBottomLinks.map((item) => {
+      {adminSidebarBottomLinks.map((item , index) => {
           const isActive = pathname === item.route;
           return (
             <Link
+              key={index}
               href={item.route}
               className={`text-sm font-medium transition-colors hover:text-primary py-1 rounded-lg ${isActive && " bg-slate-200 px-2"}`}
             >
