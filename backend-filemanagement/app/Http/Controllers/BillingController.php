@@ -35,7 +35,7 @@ class BillingController extends Controller
 
     /**
      * @OA\Get(
-     *      path="api/billings",
+     *      path="/api/billings",
      *      operationId="indexBillings",
      *      tags={"Billings"},
      *      summary="List all billings",
@@ -62,7 +62,7 @@ class BillingController extends Controller
 
     /**
      * @OA\Post(
-     *      path="api/billings/store",
+     *      path="/api/billings/store",
      *      operationId="storeBilling",
      *      tags={"Billings"},
      *      summary="Create a new billing record",
@@ -95,7 +95,7 @@ class BillingController extends Controller
     }
     /**
      * @OA\Get(
-     *      path="api/billings/show/{id}",
+     *      path="/api/billings/show/{id}",
      *      operationId="showBilling",
      *      tags={"Billings"},
      *      summary="Show billing record by ID",
@@ -130,7 +130,7 @@ class BillingController extends Controller
 
     /**
  * @OA\Put(
- *      path="api/billings/update/{id}",
+ *      path="/api/billings/update/{id}",
  *      operationId="updateBilling",
  *      tags={"Billings"},
  *      summary="Update billing record by ID",

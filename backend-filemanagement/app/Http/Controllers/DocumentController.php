@@ -32,7 +32,7 @@ class DocumentController extends Controller
 
     /**
      * @OA\Post(
-     *      path="api/documents/store",
+     *      path="/api/documents/store",
      *      operationId="storeDocument",
      *      tags={"Documents"},
      *      summary="Upload a single document",
@@ -74,7 +74,7 @@ class DocumentController extends Controller
     }
     /**
      * @OA\Post(
-     *      path="api/documents/store-multiple",
+     *      path="/api/documents/store-multiple",
      *      operationId="storeMultipleDocuments",
      *      tags={"Documents"},
      *      summary="Upload multiple documents",
@@ -123,7 +123,7 @@ class DocumentController extends Controller
 
     /**
      * @OA\Get(
-     *      path="api/documents",
+     *      path="/api/documents",
      *      operationId="getDocuments",
      *      tags={"Documents"},
      *      summary="Get paginated list of user's documents",
@@ -157,7 +157,7 @@ class DocumentController extends Controller
 
     /**
      * @OA\Get(
-     *      path="api/documents/find/{id}",
+     *      path="/api/documents/find/{id}",
      *      operationId="findDocumentById",
      *      tags={"Documents"},
      *      summary="Find document by ID",

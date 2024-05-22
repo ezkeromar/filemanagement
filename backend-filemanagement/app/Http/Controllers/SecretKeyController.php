@@ -29,7 +29,7 @@ class SecretKeyController extends Controller
 
     /**
      * @OA\Get(
-     *     path="api/secret-keys",
+     *     path="/api/secret-keys",
      *    operationId="indexSecretKeys",
      *   tags={"Secret Keys"},
      * summary="List all secret keys",
@@ -61,7 +61,7 @@ class SecretKeyController extends Controller
 
     /**
      * @OA\Post(
-     *     path="api/secret-keys/generate",
+     *     path="/api/secret-keys/generate",
      *    operationId="generate SecretKey",
      * tags={"Secret Keys"},
      * summary="Generate a new secret key",
@@ -90,7 +90,7 @@ class SecretKeyController extends Controller
     }
     /**
      * @OA\Delete(
-     *    path="api/secret-keys/{id}",
+     *    path="/api/secret-keys/{id}",
      *  operationId="destroySecretKey",
      * tags={"Secret Keys"},
      * summary="Delete a secret key",

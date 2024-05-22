@@ -25,7 +25,7 @@ class PlanController extends Controller
 
     /**
      * @OA\Get(
-     *      path="api/plans",
+     *      path="/api/plans",
      *      operationId="indexPlans",
      *      tags={"Plans"},
      *      summary="List all plans",
@@ -54,7 +54,7 @@ class PlanController extends Controller
     }
     /**
      * @OA\Post(
-     *      path="api/plans/store",
+     *      path="/api/plans/store",
      *      operationId="storePlan",
      *      tags={"Plans"},
      *      summary="Create a new plan",
@@ -81,7 +81,7 @@ class PlanController extends Controller
 
     /**
      * @OA\Get(
-     *      path="api/plans/show/{id}",
+     *      path="/api/plans/show/{id}",
      *      operationId="showPlan",
      *      tags={"Plans"},
      *      summary="Show plan by ID",
@@ -110,7 +110,7 @@ class PlanController extends Controller
     }
     /**
      * @OA\Put(
-     *     path="api/plans/update/{id}",
+     *     path="/api/plans/update/{id}",
      *    operationId="updatePlan",
      *   tags={"Plans"},
      * summary="Update an existing plan",
