@@ -14,33 +14,29 @@ export default function PublicPrivate({ className }: { className?: string }) {
             <br />
           </h1>
           <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-            Optionally protect your{" "}
-            <b className="text-black">images,3D Model, and audio </b> using
-            JWT-based auth, to give your app control over file access
-            permissions.{" "}
+          Optionally protect your images,3D model files, and  text files using JWT-based auth, to give your app control over file access permissions.
+
           </p>
           <div className=" ">
             <div className="flex">
               <div className="w-[30px]">
                 <CircleCheckBig color="#7c3aed" size={28} className="" />
-              </div>{" "}
+              </div>
               <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500">
-                  <b className="text-black">Public file access : </b>
-                  serve public assets for your app or website.
+                  <b className="text-black">Public Assets : </b>
+                  You can serve public assets for your app or website without any restrictions.
                 </span>
               </p>
             </div>
             <div className="flex mt-4">
               <div className="w-[30px]">
                 <CircleCheckBig color="#7c3aed" size={28} className="" />
-              </div>{" "}
+              </div>
               <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl">
-                  {" "}
-                  <b className="text-black">Private file access : </b> use JWTs
-                  to authorize uploads and downloads via your own API.
-                </span>
+                  <b className="text-black">Private Assets : </b> use JWTs
+                  To control file access permissions, use JWT-based authentication. This allows you to authorize uploads and downloads via your own API.                </span>
               </p>
             </div>
             <br />

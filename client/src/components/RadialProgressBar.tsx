@@ -21,7 +21,7 @@ const RadialProgressBar: React.FC<RadialProgressBarProps> = ({
 
   return (
     <div
-      className={`bg-[#8487c3b2] rounded-lg p-5 flex justify-center flex-col gap-4 font-semibold w-[16rem] ${className}`}
+      className={`bg-slate-100 rounded-lg p-5 flex justify-center flex-col gap-4 font-semibold w-[16rem] ${className}`}
     >
       <div className="relative w-48 h-48"
       >

@@ -1,6 +1,14 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
 interface Link {
   url: string | null;
   label: string;
@@ -56,7 +64,7 @@ const PaginationWithApi: React.FC<Props> = ({ links, displayPerPage, onPageChang
   return (
     <div className="flex justify-between">
       <div>
-        {displayPerPage && (
+        {/* {displayPerPage && (
           <div className="flex flex-wrap -mb-1">
             {perPageOptions.map((item, index) => (
               <div
@@ -70,7 +78,28 @@ const PaginationWithApi: React.FC<Props> = ({ links, displayPerPage, onPageChang
               </div>
             ))}
           </div>
-        )}
+        )} */}
+        <div className="flex items-center space-x-2">
+          <p className="text-xs">Rows per page</p>
+          <Select
+            value={perPage}
+            onValueChange={(value :number) => {
+              changePerPage(Number(value));
+            }}
+          >
+            <SelectTrigger className="h-8 w-[70px]">
+              <SelectValue placeholder={perPage} />
+              {perPage}
+            </SelectTrigger>
+            <SelectContent side="top">
+              {[10, 20, 30, 40, 50].map((pageSize) => (
+                <SelectItem key={pageSize} value={`${pageSize}`}>
+                  {pageSize}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
       <div className="flex flex-wrap -mb-1">
         {links.map((link, index) => (

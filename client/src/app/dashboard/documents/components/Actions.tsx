@@ -36,8 +36,8 @@ export function Actions({ itemId }: { itemId: number }) {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild className="hover:bg-[#7975ac]">
-          <Button size="icon" className="bg-transparent hover:bg-[#7975ac]">
+        <DropdownMenuTrigger asChild className="">
+          <Button size="icon" variant="link" className=" hover:border-2 hover:border-[#7975ac] bg-transparent">
             <MoreHorizontal size={22} />
           </Button>
         </DropdownMenuTrigger>

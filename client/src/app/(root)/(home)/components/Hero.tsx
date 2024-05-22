@@ -16,17 +16,15 @@ export default function Hero({ className }: { className?: string }) {
               <h1 className="max-w-2xl mb-4 text-5xl font-extrabold tracking-tight leading-none  xl:text-6xl text-black text-center md:text-start">
                 <span className="text-2xl md:text-5xl text-black">
                   {" "}
-                  One Platform for your
+                  Optimize Your Cloud Costs 
                 </span>
                 <br />
                 <span className="primary-text-gradient text-5xl m-auto ">
-                  3D Models ,Images & Files
+                and Streamline File Management
                 </span>
               </h1>
               <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl text-center dark:text-gray-400">
-                Are you tired of overspending on cloud resources? Do you
-                struggle with managing files efficiently? Look no further!
-                assetsger is your solution.
+              Are you tired of overspending on cloud resources? Do you struggle with managing files efficiently? Look no further! assetsger is your solution.
               </p>
               <div className=" w-full grid sm:flex">
                 <Link

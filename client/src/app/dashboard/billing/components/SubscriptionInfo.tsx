@@ -39,7 +39,7 @@ const SubscriptionInfo: React.FC<SubscriptionInfoProps> = ({
 
   return (
     <div
-      className={`bg-[#8487c3b2] rounded-lg p-5 flex flex-col gap-2 font-semibold ${className}`}
+      className={`bg-slate-100 rounded-lg p-5 flex flex-col gap-2 font-semibold ${className}`}
     >
       <p>Subscription Information</p>
       <div className="flex justify-between gap-4 max-sm:flex-col">

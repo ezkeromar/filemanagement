@@ -62,8 +62,15 @@ export default function Dashboard({ searchParams }: { searchParams?: SearchParam
 
   return (
     <div className="flex flex-col gap-5">
-      <h1>Welcome {user?.name ?? ""}</h1>
-      <div className="flex flex-col gap-4 w-full mb-10 bg-[#171b5e] rounded-xl p-4">
+      <div className="hidden space-y-6 p-3  md:block">
+        <div className="space-y-0.5">
+          <h2 className="text-xl font-bold tracking-tight text-blue-500">Welcome {user?.name ?? ""}</h2>
+          {/* <p className="text-muted-foreground">
+            Manage your account settings and set e-mail preferences.
+          </p> */}
+        </div>
+        </div>
+      <div className="flex flex-col gap-4 w-full mb-10 bg-slate-200 rounded-xl p-4">
         <p className="font-semibold">Dashboard Overview</p>
         <div className="flex flex-wrap gap-4 w-full">
           <WeeklyOverview salesPerformance={30} className="flex-1" />

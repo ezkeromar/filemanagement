@@ -13,19 +13,21 @@ export default function Performance({ className }: { className?: string }) {
             Remarkable performance
             <br />
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+          {/* <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
             Serve images, videos and audio to millions in seconds, with a
             media-optimized CDN and media processing APIs.
-          </p>
+          </p> */}
           <div className=" ">
             <div className="flex">
               <div className="w-[30px]">
                 <CircleCheckBig color="#7c3aed" size={28} className="" />
               </div>{" "}
               <p className="ml-2 flex gap-2 text-gray-500">
-                <b className="text-black">
-                  Up to 90% smaller images, 3D Model & audio
-                </b>
+              <span className="text-gray-500 max-w-xl">
+                  <b className="text-black">Lightning-Fast Delivery : </b>
+                  Deliver images, <b> 3D Model </b>  millions of users within seconds using a media-optimized content delivery network (CDN) and media processing APIs.
+
+                </span>
               </p>
             </div>
             
@@ -35,7 +37,9 @@ export default function Performance({ className }: { className?: string }) {
               </div>{" "}
               <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl">
-                  <b className="text-black">~10ms latency:</b> edge-cache hits
+                  <b className="text-black">Significant Size Reduction : </b> 
+                  Achieve up to 90% reduction in file size for images, videos, and audio.
+
                 </span>
               </p>
             </div>
@@ -45,17 +49,29 @@ export default function Performance({ className }: { className?: string }) {
               </div>{" "}
               <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl">
-                  <b className="text-black">~200ms latency:</b> perma-cache
-                  hits*
+                  <b className="text-black">Latency Metrics (Edge-Cache Hits) : </b> 
+                  Experience approximately 10 milliseconds latency for cached content at the edge.
                 </span>
               </p>
             </div>
+            <div className="flex mt-4">
+              <div className="w-[30px]">
+                <CircleCheckBig color="#7c3aed" size={28} className="" />
+              </div>{" "}
+              <p className="ml-2 flex gap-2 text-gray-500">
+                <span className="text-gray-500 max-w-xl">
+                  <b className="text-black">Latency Metrics (Perma-Cache Hits) : </b> 
+                  Enjoy around 200 milliseconds latency for permanently cached content.
+                </span>
+              </p>
+            </div>
+            
             <br />
           </div>
-          <span className="text-gray-500 max-w-xl">
+          {/* <span className="text-gray-500 max-w-xl">
             * Ar-display uses a permanent cache to return processed images,
             videos and audio near-instantly on all edge-cache misses, forever
-          </span>
+          </span> */}
         </div>
         <div className=" lg:mt-0 lg:col-span-5 lg:flex mt-5 ">
           <Image

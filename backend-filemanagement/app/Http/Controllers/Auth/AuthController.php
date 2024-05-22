@@ -23,7 +23,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 
 
-class AuthController extends Controller
+class AuthController 
 
 {
 

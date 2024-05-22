@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', [testController::class, 'index']);
+Route::get('/test', [testController::class, 'runScript']);

@@ -55,14 +55,21 @@ export default  function Billing({
     percent = user.details?.percentage ? parseInt(user.details?.percentage) : 0; 
   }
 
-  const tableRowStyles = " border-none hover:bg-transparent ";
-  const tableHeadStyles = " text-center text-[#F5F5F5] border-b border-r px-2 ";
-  const tableCellStyles = " text-center text-[#F5F5F5] border-r p-2 ";
+  const tableRowStyles = " hover:bg-transparent bg-slate-200 border-b border-r-0";
+  const tableHeadStyles = " ";
+  const tableCellStyles = "";
 
   return (
     <div className="flex flex-col gap-5">
-      <h1>Billing</h1>
-      <div className="flex flex-col gap-4 w-full mb-10 bg-[#171b5e] rounded-xl p-4">
+      <div className="hidden space-y-6 p-3  md:block">
+        <div className="space-y-0.5">
+          <h2 className="text-xl font-bold tracking-tight text-blue-500">Billings</h2>
+          {/* <p className="text-muted-foreground">
+            Manage your account settings and set e-mail preferences.
+          </p> */}
+        </div>
+        </div>
+      <div className="flex flex-col gap-4 w-full mb-10 bg-slate-200 rounded-xl p-4">
         <div className="flex flex-wrap gap-4 w-full">
           <SubscriptionInfo className="flex-1" user={user} />
 
@@ -75,9 +82,9 @@ export default  function Billing({
         </div>
       </div>
 
-      <Table className="max-w-screen overflow-x-scroll rounded-xl bg-[#171b5e]">
+      <Table className="max-w-screen overflow-x-scroll  rounded-3xl bg-slate-100 ">
         <TableHeader>
-          <TableRow className={tableRowStyles}>
+          <TableRow>
             <TableHead
               className={`${tableHeadStyles} text-start min-w-[9.5rem] max-w-[11rem]`}
             >
@@ -92,7 +99,7 @@ export default  function Billing({
             <TableHead className={`${tableHeadStyles} w-[7rem]`}>
               <p>Status</p>
             </TableHead>
-            <TableHead className={`${tableHeadStyles} px-6 border-r-0`}>
+            <TableHead className={`${tableHeadStyles} px-6 border-r-0 w-[2rem]`} >
               <p>Date</p>
             </TableHead>
           </TableRow>

@@ -10,13 +10,13 @@ export default function BlurHash({ className }: { className?: string }) {
       <div className="grid max-w-screen-xl px-2 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-black">
-            BlurHash, WebP, AVIF & more
-            <br />
+          BlurHash, WebP, AVIF & more
+                      <br />
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-            Upgrade your web app to the latest image technologies, from BlurHash
-            image placeholders, to WebP and AVIF.{" "}
-          </p>
+          {/* <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+          These APIs are straightforward and extensively documented, eliminating the need for software development kits (SDKs). 
+
+          </p> */}
 
           <div className=" ">
             <div className="flex">
@@ -24,33 +24,41 @@ export default function BlurHash({ className }: { className?: string }) {
               <CircleCheckBig color="#7c3aed" size={28} className="" />
             </div>              <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500">
-                <b className="text-black">BlurHash : </b>
+                <b className="text-black">BlurHash for Instant Image Placeholders : </b>
+                Use BlurHash to create quick placeholders for images.
+                </span>
+              </p>
+            </div>
+            <br />
+            <div className="flex">
+            <div className="w-[30px]">
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
+            </div>              <p className="ml-2 flex gap-2 text-gray-500">
+                <span className="text-gray-500 max-w-xl">
+                  <b className="text-black">Performance Enhancement : </b> 
+                  Boost your website’s Google PageSpeed score by reducing Largest Contentful Paint (LCP) with BlurHash.
+
+                </span>
+              </p>
+            </div>
+            <br />
+            <div className="flex">
+            <div className="w-[30px]">
+              <CircleCheckBig color="#7c3aed" size={28} className="" />
+            </div>              <p className="ml-2 flex gap-2 text-gray-500">
+                <span className="text-gray-500 max-w-xl">
                   
-                  for instant image placeholders.
-                </span>
+                Boost your website’s Google PageSpeed score by reducing Largest Contentful Paint (LCP) with BlurHash.</span>
               </p>
             </div>
-            <br />
             <div className="flex">
             <div className="w-[30px]">
               <CircleCheckBig color="#7c3aed" size={28} className="" />
             </div>              <p className="ml-2 flex gap-2 text-gray-500">
                 <span className="text-gray-500 max-w-xl">
-                  <b className="text-black">Improve performance : </b> improve
-                  your website&apos;s Google PageSpeed score by reducing
-                  Largest Contentful Paint (LCP) with BlurHashes.
-                </span>
-              </p>
-            </div>
-            <br />
-            <div className="flex">
-            <div className="w-[30px]">
-              <CircleCheckBig color="#7c3aed" size={28} className="" />
-            </div>              <p className="ml-2 flex gap-2 text-gray-500">
-                <span className="text-gray-500 max-w-xl">
-                  {" "}
-                  <b className="text-black">External storage: </b> map any
-                  folder to external storage.
+
+                  
+                Achieve up to 90% bandwidth reduction by utilizing WebP, AVIF, and adjusting image quality and compression settings.
                 </span>
               </p>
             </div>

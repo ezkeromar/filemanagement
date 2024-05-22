@@ -53,19 +53,27 @@ export default function Documents() {
     setIsDocumentDialogOpen(true);
   };
 
-  const tableRowStyles = "border-none hover:bg-transparent";
-  const tableHeadStyles = "text-center text-[#F5F5F5] border-b border-r px-2";
-  const tableCellStyles = "text-center text-[#F5F5F5] border-r p-2";
+  // const tableRowStyles = "border-none hover:bg-transparent";
+  // const tableHeadStyles = "text-center text-[#F5F5F5] border-b border-r px-2";
+  // const tableCellStyles = "text-center text-[#F5F5F5] border-r p-2";
+  const tableRowStyles = " hover:bg-transparent bg-slate-200 border-b border-r-0";
+  const tableHeadStyles = " ";
+  const tableCellStyles = "";
 
   return (
     <div className="flex flex-col gap-5">
-      <h1 className="relative group">
-        Documents
-        <span className="absolute content-[''] bg-white w-[10rem] h-[1.5px] left-0 bottom-[-0.75rem] rounded-xl"></span>
-      </h1>
-      <Table className="max-w-screen overflow-x-scroll rounded-xl bg-[#171b5e]">
-        <TableHeader>
-          <TableRow className={tableRowStyles}>
+      
+      <div className="hidden space-y-6 p-3  md:block">
+        <div className="space-y-0.5">
+          <h2 className="text-xl font-bold tracking-tight text-blue-500">Documents</h2>
+          {/* <p className="text-muted-foreground">
+            Manage your account settings and set e-mail preferences.
+          </p> */}
+        </div>
+        </div>
+      <Table className="max-w-screen overflow-x-scroll  rounded-3xl bg-slate-100 ">
+        <TableHeader className="">
+          <TableRow >
             <TableHead
               className={`${tableHeadStyles} text-start min-w-[9.5rem] max-w-[11rem]`}
             >
@@ -78,7 +86,7 @@ export default function Documents() {
               <p>URL</p>
             </TableHead>
             <TableHead
-              className={`${tableHeadStyles} px-2 border-r-0 flex justify-center items-center`}
+              className={`${tableHeadStyles} px-2 border-r-0 flex justify-center items-center `}
             >
               <CirclePlus onClick={openDocumentDialog} />
             </TableHead>
@@ -86,7 +94,7 @@ export default function Documents() {
         </TableHeader>
         <TableBody>
           { !isLoding && documents?.data.map((item: Document, index: number) => (
-            <TableRow key={index} className={tableRowStyles}>
+            <TableRow key={index} className={ `${tableRowStyles}  `}>
               <TableCell className={tableCellStyles}>
                 <p>{item.name}</p>
               </TableCell>
@@ -97,7 +105,7 @@ export default function Documents() {
                 <CopyValue value={item.url} />
               </TableCell>
               <TableCell
-                  className={`${tableRowStyles} px-6 border-r-0 text-center `}
+                  className={`${tableCellStyles} px-6 border-r-0 text-center border-b-0`}
                   >
                 <Actions itemId={item.id} />
               </TableCell>

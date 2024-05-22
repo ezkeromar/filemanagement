@@ -21,8 +21,7 @@ type UseAuthReturnType = {
   ) => Promise<void>;
 };
 
-const useAuth = (): UseAuthReturnType => {
-
+const useAuth = (isRedirect = true): UseAuthReturnType => {
 
   const [user, setUser] = useState(null);
   const [isError, setIsError] = useState<boolean>(false);
@@ -156,12 +155,14 @@ const useAuth = (): UseAuthReturnType => {
   };
 
   useEffect(() => {
+    if (isRedirect ){
     if (isError && user === null) {
       router.push("/login");
     }
     else if (!isAuthenticated) {
       router.push("/login");
     }
+  }
 
   }, [user, isError]);
 

@@ -72,10 +72,10 @@ export function LoginForm() {
 
 
   return (
-    <Card className="w-full max-w-[500px] bg-transparent border-none">
+    <Card className="w-full max-w-[500px] md:bg-slate-200 border-none">
       <CardHeader className="space-y-3 pb-5">
         <Logo className="mx-auto mb-4 sm:mb-10" width={160} height={50} />
-        <CardTitle className="text-center text-2xl">Login</CardTitle>
+        <CardTitle className="text-center text-2xl text-[#3b37ff]">Login</CardTitle>
         <CardDescription className="text-center text-sm">
           Enter your email and password bellow to login
         </CardDescription>
@@ -99,7 +99,7 @@ export function LoginForm() {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-[#171b5e] border-none rounded-l-none placeholder:text-white"
+                        className="bg-slate-50 border-none rounded-l-none "
                         placeholder="Enter your email"
                         type="email"
                         {...field}
@@ -128,7 +128,7 @@ export function LoginForm() {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-[#171b5e] border-none rounded-l-none placeholder:text-white"
+                        className="bg-slate-50 border-none rounded-l-none"
                         placeholder="Enter your password"
                         type="password"
                         {...field}
@@ -144,14 +144,14 @@ export function LoginForm() {
             <small className="text-sm text-muted-foreground">
               By logging in, you agree to our{" "}
               <Link
-                className="font-semibold underline mx-1 text-white"
+                className="font-semibold underline mx-1 text-black"
                 href="/terms-of-service"
               >
                 Terms of Service
               </Link>{" "}
               and{" "}
               <Link
-                className="font-semibold underline mx-1 text-white"
+                className="font-semibold underline mx-1 text-black"
                 href="/privacy-policy"
               >
                 Privacy Policy
@@ -160,14 +160,14 @@ export function LoginForm() {
 
             <Button
               type="submit"
-              className="w-full bg-[#171b5e] gap-1"
+              className="w-full bg-[#3b37ff] gap-1n "
               disabled={isSubmitting}
             >
               <Loader2
                 className={isSubmitting ? "animate-spin" : "hidden"}
                 size={20}
               />
-              <p>Login</p>
+              <p className="text-white">Login</p>
             </Button>
           </form>
         </Form>

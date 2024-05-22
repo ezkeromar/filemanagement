@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Sidebar from "@/components/layout/admin/Sidebar";
 import Header from "@/components/layout/admin/Header";
+import { MainNav } from "@/components/layout/root/MainNav";
 
 
 
@@ -13,18 +14,13 @@ export default async function AdminLayout({
   
 
   return (
-    <div className="relative overflow-y-hidden h-screen max-w-7xl mx-auto flex">
-      <div className="z-[-1] absolute h-full w-full top-0 left-0">
-      <Image src="/images/bg-layout.png" alt="bg-img" fill />
-
-      </div>
-
+    <div className="relative overflow-y-hidden h-screen  mx-auto flex b">
       <Header />
-      <Sidebar/>
       <main
-        className="max-sm:w-full overflow-y-auto grow px-4 pb-8 pt-16 lg:pt-20 lg:w-auto"
+        className="max-sm:w-full overflow-y-auto grow pb-8 md:px-10 px-3 pt-16  lg:w-auto"
         style={{ width: "calc(100vw - 70px)" }}
       >
+
         {children}
       </main>
     </div>

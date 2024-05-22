@@ -87,12 +87,12 @@ export function StoreDocument({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[425px] bg-[#171b5e]">
+      <DialogContent className="sm:max-w-[425px] bg-slate-200">
           <p className="-mt-4">Upload Document</p>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-4 w-full  bg-[#171b5e] rounded-xl px-4 "
+            className="flex flex-col gap-4 w-full  bg-slate-200 rounded-xl px-4 "
           >
             <DialogHeader>
               <DialogDescription>
@@ -109,7 +109,7 @@ export function StoreDocument({
                       <FormControl>
 
                         <Input
-                          className="cursor-pointer"
+                          className="cursor-pointer bg-slate-50 border-none rounded-l-none"
                           id="file"
                           onChange={(e) => {
                             const file = e.target.files?.[0];

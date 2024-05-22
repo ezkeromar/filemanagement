@@ -21,7 +21,7 @@ export function User() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="relative w-11 h-11 rounded-full bg-[#575a98] hover:bg-[#6f34d5]"
+          className="relative w-11 h-11 rounded-full bg-[#3b37ff] hover:bg-[#0679f6]"
         >
           <Avatar className="w-11 h-11">
             <AvatarImage
@@ -29,7 +29,7 @@ export function User() {
               src={user?.image ?? "/icons/user.png"}
               alt={user?.name}
             />
-            <AvatarFallback className="text-xl bg-[#575a98] hover:bg-[#6f34d5]">
+            <AvatarFallback className="text-xl text-white bg-[#3b37ff] hover:bg-[#0679f6]">
               {user?.name[0] ?? "U"}
             </AvatarFallback>
           </Avatar>
@@ -42,7 +42,7 @@ export function User() {
       >
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col">
-            <p className="text-sm font-medium leading-[1.5] truncate">
+            <p className="text-sm font-medium leading-[1.5] truncate text-white">
               {user?.name}
             </p>
             <p className="text-xs leading-[1.5] text-muted-foreground truncate">

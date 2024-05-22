@@ -21,6 +21,8 @@ import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/components/ui/use-toast";
+import { sendEmail } from "@/utils/email";
+
 
 
 export default function Footer() {
@@ -36,17 +38,31 @@ export default function Footer() {
 
   async function handleSubmit(data: z.infer<typeof subscribeSchema>) {
     setIsSubmitting(true);
-    const res = await fetch("/api/subscribe/store", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!res?.ok) throw new Error(await res.text());
-    form.reset();
-    toast({ title: "Subscribed"});
-    setIsSubmitting(false);
+
+    const emailDetails = {
+      to: 'hamzatbib91@gmail.com',
+      from: 'sender@example.com',
+      subject: 'New contact form submission',
+      message: '...',
+    };
+
+    try {
+      await sendEmail(emailDetails);
+      console.log('Email sent successfully!');
+      setIsSubmitting(false);
+      form.reset();
+      toast({ title: "Subscribed"});
+
+
+
+      // Perform any additional actions after successful email sending
+    } catch (error) {
+      setIsSubmitting(false);
+
+      console.error('Error sending email:', error);
+    }
+    
+    
   }
 
   return (
@@ -116,7 +132,7 @@ export default function Footer() {
         </div>
       </div>
       <small className="text-[16px] text-black">
-        Ar Display {new Date().getFullYear()}
+        Assets Ger {new Date().getFullYear()}
       </small>
     </footer>
   );

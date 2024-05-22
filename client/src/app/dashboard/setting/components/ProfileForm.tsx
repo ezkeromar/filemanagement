@@ -48,12 +48,12 @@ export function ProfileForm({ user }: { user: any }) {
   
 
   const inputStyles =
-    "!mt-1 paragraph-normal text-[#FFF] bg-[#2e3044] border-0 placeholder:text-[#CFCFCF]";
+    "!mt-1 paragraph-normal text-[#FFF] bg-white border-0  text-black";
 
   return (
     <Form {...form}>
       <form
-        className="flex flex-col gap-3 w-full mb-10 bg-[#171b5e] rounded-xl px-4 py-5"
+        className="flex flex-col gap-3 w-full mb-10 bg-slate-200 rounded-xl px-4 py-5 "
       >
 
         <FormField

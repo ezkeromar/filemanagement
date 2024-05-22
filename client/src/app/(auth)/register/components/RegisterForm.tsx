@@ -35,7 +35,7 @@ export function RegisterForm() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const { register } = useAuth(); 
+  const { register } = useAuth(false);
 
 
   // 1. Define your form.
@@ -58,10 +58,10 @@ export function RegisterForm() {
   };
 
   return (
-    <Card className="w-full max-w-[500px] bg-transparent border-none">
+    <Card className="w-full max-w-[500px] md:bg-slate-200 border-none">
       <CardHeader className="space-y-3 pb-5">
         <Logo className="mx-auto mb-4 sm:mb-10" width={160} height={50} />
-        <CardTitle className="text-center text-2xl">Register</CardTitle>
+        <CardTitle className="text-center text-2xl text-[#3b37ff]">Register</CardTitle>
         <CardDescription className="text-center text-sm">
           Enter your email and password bellow to register
         </CardDescription>
@@ -85,7 +85,7 @@ export function RegisterForm() {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-[#171b5e] border-none rounded-l-none placeholder:text-white"
+                        className="bg-slate-50 border-none rounded-l-none "
                         placeholder="Enter your name"
                         type="text"
                         {...field}
@@ -114,7 +114,7 @@ export function RegisterForm() {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-[#171b5e] border-none rounded-l-none placeholder:text-white"
+                        className="bg-slate-50 border-none rounded-l-none "
                         placeholder="Enter your email"
                         type="email"
                         {...field}
@@ -143,7 +143,7 @@ export function RegisterForm() {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-[#171b5e] border-none rounded-l-none placeholder:text-white"
+                        className="bg-slate-50 border-none rounded-l-none "
                         placeholder="Enter your password"
                         type="password"
                         {...field}
@@ -172,7 +172,7 @@ export function RegisterForm() {
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="bg-[#171b5e] border-none rounded-l-none placeholder:text-white"
+                        className="bg-slate-50 border-none rounded-l-none "
                         placeholder="Confirm your password"
                         type="password"
                         {...field}
@@ -204,14 +204,14 @@ export function RegisterForm() {
 
             <Button
               type="submit"
-              className="w-full bg-[#171b5e] gap-1"
+              className="w-full bg-[#3b37ff] gap-1"
               disabled={isSubmitting}
             >
               <Loader2
                 className={isSubmitting ? "animate-spin" : "hidden"}
                 size={20}
               />
-              <p>Register</p>
+              <p className="text-white">Register</p>
             </Button>
           </form>
         </Form>
